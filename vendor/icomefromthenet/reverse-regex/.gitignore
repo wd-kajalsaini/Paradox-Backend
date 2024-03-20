@@ -1,5 +1,0 @@
-vendor
-.vagrant
-composer.lock
-*.komodoproject
-manifest
