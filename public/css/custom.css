@@ -1,0 +1,29 @@
+.customLoader
+{
+  position: fixed;
+    background: rgba(255,255,255,1);
+    width: 100%;
+    z-index: 9999;
+    height: 100%;
+    overflow: hidden;
+}
+
+@keyframes mySpinner {
+    to {
+      transform: rotate(360deg); } }
+  
+  .mySpinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite; 
+    position: absolute; 
+    top: 50%;
+    
+    transform: translate(-50%,);
+}
+  

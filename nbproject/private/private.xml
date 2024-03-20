@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Admin/UsersController.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/KvitelContact.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Api/HomeController.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/routes/api.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Api/PhoneVerificationController.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Api/UserController.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/User.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Api/KvitelIdController.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/resources/views/kvitel_products/edit.blade.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Contact.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/resources/views/layouts/header.blade.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Admin/AppContentController.php</file>
+            <file>file:/D:/xampp/htdocs/kvitel/app/Http/Controllers/Api/FriendController.php</file>
+        </group>
+    </open-files>
+</project-private>
