@@ -133,7 +133,7 @@
                                 <select name="team_1_id" id="team_1_dropdown" placeholder="" class="form-control ctSelectBox1" required="" >
                                     <option value="">Choose team</option>
                                     @foreach($teams as $team)
-                                  <option  value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('public/img/avatarEmpty.png') }}">
+                                  <option  value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('img/avatarEmpty.png') }}">
                                     {{ $team->title }}
                                     </option>
                                     @endforeach
@@ -149,7 +149,7 @@
                                 <select name="team_2_id" id="team_2_dropdown" placeholder="" class="form-control ctSelectBox1" required="" >
                                     <option value="">Choose team</option>
                                     @foreach($teams as $team)
-                                  <option  value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('public/img/avatarEmpty.png') }}">
+                                  <option  value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('img/avatarEmpty.png') }}">
                                     {{ $team->title }}
                                     </option>
                                     @endforeach
@@ -222,7 +222,7 @@ $("#imgInp").change(function() {
 
 $("#delet_photo").click(function()
 {
-    $('#blah').attr('src',"{{ asset('public/img/avatarEmpty.png') }}");
+    $('#blah').attr('src',"{{ asset('img/avatarEmpty.png') }}");
     $('.del_btn').hide();
     $("#imgInp").val("");
 });
@@ -265,17 +265,17 @@ $('#add_show').on('submit',function(e){
                     } else {
                         var action = thiss.attr('action');
                         var form_data = new FormData(thiss[0]);
+                        console.log(form_data);
                         $.ajax({
                             url: "{{route('addShowAdd')}}",
                             type: 'POST',
                             data: form_data,
                             contentType: false,
                             processData: false,
-                            success: function (response) {s
+                            success: function (response) {
                                 if (response.status == 1) {
                                     window.location = "{{route('showsListing')}}";
                                 } else {
-                                    alert('okk');
                                     swal("Error", response.message, 'error');
                                 }
                             }

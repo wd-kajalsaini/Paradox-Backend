@@ -144,7 +144,7 @@
                                                     <label class="col-form-label">{{__('Avatar Image (Click icon to upload)')}}</label>
                                                     <input class="form-control" type="hidden" id="extension_icon" name="image">
                                                     <div class="uploadAvatarImage">
-                                                        <img src="{{ asset('public/img/avatarEmpty.png') }}" id="extension_avatar" onclick="selectFileWithCKFinder('extension_icon', 'extension_avatar')">
+                                                        <img src="{{ asset('img/avatarEmpty.png') }}" id="extension_avatar" onclick="selectFileWithCKFinder('extension_icon', 'extension_avatar')">
                                                     </div>
                                                     @if ($errors->has('image'))
                                                     <span class="text-danger">{{ $errors->first('image') }}</span>

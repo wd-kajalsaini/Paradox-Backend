@@ -33,7 +33,7 @@
                     <tbody>
                         @foreach($shows as $show)
                         <tr class="gradeX">
-                            <td><img src="{{ (!empty($show->banner))?$show->banner:asset('public/img/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
+                            <td><img src="{{ (!empty($show->banner))?$show->banner:asset('img/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
                             <td>{{ $show->title }}</td>
                             <td ><a href="{{ route('subscribedShowUsers',$show->id) }}" class="text-warning" style="text-decoration:none"><i class="fas fa-bookmark"></i> {{ $show->subscribed_users_count }}</a></td>
                             <td ><a href="{{ route('showQuestions',$show->id) }}" class="text-primary" style="text-decoration:none"><i class="fa fa-file"></i> {{ $show->show_questions_count }}</a></td>

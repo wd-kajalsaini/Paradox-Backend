@@ -36,7 +36,7 @@
                         @foreach($teams as $team)
                         <tr class="gradeX">
                             <td>{{ $team->title }}</td>
-                            <td><img src="{{ (!empty($team->logo))?$team->logo:asset('public/img/avatarEmpty.png') }}" class="width-80" alt="Player Thumbnail"></td>
+                            <td><img src="{{ (!empty($team->logo))?$team->logo:asset('img/avatarEmpty.png') }}" class="width-80" alt="Player Thumbnail"></td>
                             <td>{{ $team->players_count }}</td>
                             <td class="text-right">
                                 <button class="mb-1 btn btn-danger delete_team" type="button" data-id="{{$team->id}}"><i class="fa fa-trash"></i> </button>

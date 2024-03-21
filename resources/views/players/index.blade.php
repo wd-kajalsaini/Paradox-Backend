@@ -38,7 +38,7 @@
                         @foreach($players as $player)
                         <tr class="gradeX">
                             <td>{{ $player->name }}</td>
-                            <td><img src="{{ (!empty($player->thumbnail))?$player->thumbnail:asset('public/img/avatarEmpty.png') }}" class="width-80" alt="Player Thumbnail"></td>
+                            <td><img src="{{ (!empty($player->thumbnail))?$player->thumbnail:asset('img/avatarEmpty.png') }}" class="width-80" alt="Player Thumbnail"></td>
                             <td>{{ $player->description }}</td>
                             <td>{{ $player->instagram_profile_url }}</td>
                             <td>{{ $player->facebook_profile_url }}</td>

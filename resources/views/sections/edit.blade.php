@@ -63,7 +63,7 @@
                             <div class="col-sm-9">
                                 <select multiple id="showselection" name="shows[]" placeholder="" class="form-control ctSelectBox1" required="" >
                                     @foreach($shows as $show)
-                                  <option value="{{ $show->id }}" data-image="{{ !empty($show->banner)?$show->banner:asset('public/img/avatarEmpty.png') }}" <?php if(in_array($show->id,$selected_shows)){ echo "selected"; } ?>>
+                                  <option value="{{ $show->id }}" data-image="{{ !empty($show->banner)?$show->banner:asset('img/avatarEmpty.png') }}" <?php if(in_array($show->id,$selected_shows)){ echo "selected"; } ?>>
                                     {{ $show->title }}
                                     </option>
                                     @endforeach
@@ -111,7 +111,7 @@ $("#imgInp").change(function() {
 
 $("#delet_photo").click(function()
 {
-    $('#blah').attr('src',"{{ asset('public/img/avatarEmpty.png') }}");
+    $('#blah').attr('src',"{{ asset('img/avatarEmpty.png') }}");
     $('.del_btn').hide();
     $("#imgInp").val("");
 });

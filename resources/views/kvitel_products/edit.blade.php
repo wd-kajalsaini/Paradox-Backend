@@ -26,44 +26,44 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group eventDate">
-                                            <label class="col-form-label">{{ __('Title')}}</label>   
+                                            <label class="col-form-label">{{ __('Title')}}</label>
                                             <input type="text" name="title" class="form-control" value="{{ $kvitel_product->title }}" required>
-                                        </div> 
+                                        </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ __('Price')}}</label>  
+                                            <label class="col-form-label">{{ __('Price')}}</label>
                                             <input type="number" name="price" step="0.01" class="form-control" value="{{ $kvitel_product->price }}" required>
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="col-form-label">{{ __('Length')}}</label>  
+                                            <label class="col-form-label">{{ __('Length')}}</label>
                                             <input type="number" name="length" min="1" max="9" class="form-control" value="{{ $kvitel_product->length }}" required>
-                                        </div> 
+                                        </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="col-form-label">{{ __('Is Best')}}</label>
                                             <label class="switch switch-lg"><input type="checkbox" <?php if(!empty($kvitel_product->is_best)){echo "checked";} ?> name="is_best" value="1"><span></span></label>
-                                        </div> 
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12"> 
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="col-form-label">{{ __('Description')}}</label>
                                             <textarea name="description" rows="2" class="form-control" required>{{ $kvitel_product->description }}</textarea>
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="col-form-label">{{__('Image (Click icon to upload)')}}</label>
                                             <input class="form-control" type="hidden" id="extension_icon" name="logo">
                                             <div class="uploadAvatarImage">
-                                                <img src="{{ !empty($kvitel_product->logo)?$kvitel_product->logo:asset('public/img/avatarEmpty.png')}}" id="extension_avatar" onclick="selectFileWithCKFinder('extension_icon', 'extension_avatar')">
+                                                <img src="{{ !empty($kvitel_product->logo)?$kvitel_product->logo:asset('img/avatarEmpty.png')}}" id="extension_avatar" onclick="selectFileWithCKFinder('extension_icon', 'extension_avatar')">
                                             </div>
-                                        </div>                                         
+                                        </div>
                                     </div>
                                 </div>
                             </div>

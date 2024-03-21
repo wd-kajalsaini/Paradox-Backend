@@ -5,23 +5,23 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <meta name="description" content="Paradox">
    <meta name="keywords" content="admin">
-   <link rel="icon" type="image/x-icon" href="https://electraprodev.shtibel.com/electraAdmin/public/img/fav.ico">
+   <link rel="icon" type="image/x-icon" href="https://electraprodev.shtibel.com/electraAdmin/img/fav.ico">
    <title>Paradox - Reset Password</title>
    <!-- =============== VENDOR STYLES ===============-->
    <!-- FONT AWESOME-->
-   <link rel="stylesheet" href="{{ asset('public/vendor/@fortawesome/fontawesome-free/css/brands.css')}}">
-   <link rel="stylesheet" href="{{ asset('public/vendor/@fortawesome/fontawesome-free/css/regular.css')}}">
-   <link rel="stylesheet" href="{{ asset('public/vendor/@fortawesome/fontawesome-free/css/solid.css')}}">
-   <link rel="stylesheet" href="{{ asset('public/vendor/@fortawesome/fontawesome-free/css/fontawesome.css')}}"><!-- SIMPLE LINE ICONS-->
-   <link rel="stylesheet" href="{{ asset('public/vendor/simple-line-icons/css/simple-line-icons.css')}}"><!-- =============== BOOTSTRAP STYLES ===============-->
-   <link rel="stylesheet" href="{{ asset('public/css/bootstrap.css" id="bscss')}}"><!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/brands.css')}}">
+   <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/regular.css')}}">
+   <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/solid.css')}}">
+   <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/fontawesome.css')}}"><!-- SIMPLE LINE ICONS-->
+   <link rel="stylesheet" href="{{ asset('vendor/simple-line-icons/css/simple-line-icons.css')}}"><!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="{{ asset('css/bootstrap.css" id="bscss')}}"><!-- =============== APP STYLES ===============-->
 
    <!-- Datatables-->
-   <link rel="stylesheet" href="{{ asset('public/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css')}}">
-   <link rel="stylesheet" href="{{ asset('public/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css')}}">
-   <link rel="stylesheet" href="{{ asset('public/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css')}}"><!-- =============== BOOTSTRAP STYLES ===============-->
-   <link rel="stylesheet" href="{{ asset('public/css/bootstrap.css')}} " id="bscss"><!-- =============== APP STYLES ===============-->
-   <link rel="stylesheet" href="{{ asset('public/css/app.css')}} " id="maincss">
+   <link rel="stylesheet" href="{{ asset('vendor/datatables.net-bs4/css/dataTables.bootstrap4.css')}}">
+   <link rel="stylesheet" href="{{ asset('vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css')}}">
+   <link rel="stylesheet" href="{{ asset('vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css')}}"><!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}} " id="bscss"><!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="{{ asset('css/app.css')}} " id="maincss">
 
 <script src="https://kit.fontawesome.com/d565f77dcb.js" crossorigin="anonymous"></script>
 </head>
@@ -36,7 +36,7 @@
          <div class="card card-flat ">
             <div class="card-header text-center" style="background-color:#000">
             	<a href="#">
-            		<img class="block-center rounded" src="{{asset('public/img/logo-dark.png')}}" alt="Image" >
+            		<img class="block-center rounded" src="{{asset('img/logo-dark.png')}}" alt="Image" >
             	</a>
             </div>
             <div class="card-body">
@@ -98,33 +98,33 @@
  </div>
  <!-- =============== VENDOR SCRIPTS ===============-->
 
-  <script src="{{ asset('public/vendor/jquery/dist/jquery.js')}}"></script><!-- BOOTSTRAP-->
-  <script src="{{ asset('public/vendor/modernizr/modernizr.custom.js')}}"></script><!-- STORAGE API-->
-   <script src="{{ asset('public/vendor/js-storage/js.storage.js')}}"></script><!-- i18next-->
-   <script src="{{ asset('public/vendor/i18next/i18next.js')}}"></script>
-   <script src="{{ asset('public/vendor/i18next-xhr-backend/i18nextXHRBackend.js')}}"></script><!-- JQUERY-->
-   <script src="{{ asset('public/vendor/popper.js/dist/umd/popper.js')}}"></script>
-   <script src="{{ asset('public/vendor/bootstrap/dist/js/bootstrap.js')}}"></script><!-- PARSLEY-->
+  <script src="{{ asset('vendor/jquery/dist/jquery.js')}}"></script><!-- BOOTSTRAP-->
+  <script src="{{ asset('vendor/modernizr/modernizr.custom.js')}}"></script><!-- STORAGE API-->
+   <script src="{{ asset('vendor/js-storage/js.storage.js')}}"></script><!-- i18next-->
+   <script src="{{ asset('vendor/i18next/i18next.js')}}"></script>
+   <script src="{{ asset('vendor/i18next-xhr-backend/i18nextXHRBackend.js')}}"></script><!-- JQUERY-->
+   <script src="{{ asset('vendor/popper.js/dist/umd/popper.js')}}"></script>
+   <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.js')}}"></script><!-- PARSLEY-->
 
     <!-- Datatables-->
-   <script src="{{ asset('public/vendor/datatables.net/js/jquery.dataTables.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-buttons/js/dataTables.buttons.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-buttons/js/buttons.colVis.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-buttons/js/buttons.flash.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-buttons/js/buttons.html5.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-buttons/js/buttons.print.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-keytable/js/dataTables.keyTable.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-responsive/js/dataTables.responsive.js')}}"></script>
-   <script src="{{ asset('public/vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-   <script src="{{ asset('public/vendor/jszip/dist/jszip.js')}}"></script>
-   <script src="{{ asset('public/vendor/pdfmake/build/pdfmake.js')}}"></script>
-   <script src="{{ asset('public/vendor/pdfmake/build/vfs_fonts.js')}}"></script>
-   <script src="{{ asset('public/vendor/js-storage/js.storage.js')}}"></script><!-- SCREENFULL-->
-   <script src="{{ asset('public/vendor/nestable/jquery.nestable.js')}}"></script><!-- =============== APP SCRIPTS ===============-->
-   <script src="{{ asset('public/vendor/parsleyjs/dist/parsley.js')}}"></script><!-- =============== APP SCRIPTS ===============-->
-   <script src="{{ asset('public/js/app.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net/js/jquery.dataTables.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-buttons/js/dataTables.buttons.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.colVis.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.flash.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.html5.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-buttons/js/buttons.print.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-keytable/js/dataTables.keyTable.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-responsive/js/dataTables.responsive.js')}}"></script>
+   <script src="{{ asset('vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+   <script src="{{ asset('vendor/jszip/dist/jszip.js')}}"></script>
+   <script src="{{ asset('vendor/pdfmake/build/pdfmake.js')}}"></script>
+   <script src="{{ asset('vendor/pdfmake/build/vfs_fonts.js')}}"></script>
+   <script src="{{ asset('vendor/js-storage/js.storage.js')}}"></script><!-- SCREENFULL-->
+   <script src="{{ asset('vendor/nestable/jquery.nestable.js')}}"></script><!-- =============== APP SCRIPTS ===============-->
+   <script src="{{ asset('vendor/parsleyjs/dist/parsley.js')}}"></script><!-- =============== APP SCRIPTS ===============-->
+   <script src="{{ asset('js/app.js')}}"></script>
 
    <script>
 

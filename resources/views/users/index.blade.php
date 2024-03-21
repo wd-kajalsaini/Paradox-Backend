@@ -54,7 +54,7 @@
                                         <td>{{ $userList->name }}</td>
                                         <td>{{ $userList->phone_number }}</td>
                                         <td>{{ $userList->email }}</td>
-                                        <td><img src="{{ !empty($userList->image) && @getimagesize($userList->image)?$userList->image:asset('public/img/avatarEmpty.png')}}" width="80" height="80" class="img-thumbnail rounded-circle"></td>
+                                        <td><img src="{{ !empty($userList->image) && @getimagesize($userList->image)?$userList->image:asset('img/avatarEmpty.png')}}" width="80" height="80" class="img-thumbnail rounded-circle"></td>
                                         <td>{{ $userList->gender }}</td>
                                         <td>{{ $userList->device_type }}</td>
                                         <td>{{ $userList->app_version }}</td>

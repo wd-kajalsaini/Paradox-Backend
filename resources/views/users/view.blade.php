@@ -137,7 +137,7 @@
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <b>Preview:</b>
-                                                            <div class="preview_thumb mt-2"><img id="blah" src="{{ !empty($userDetail->image) && @getimagesize($userDetail->image)?$userDetail->image:asset('public/img/avatarEmpty.png')}}" alt="Show banner" />
+                                                            <div class="preview_thumb mt-2"><img id="blah" src="{{ !empty($userDetail->image) && @getimagesize($userDetail->image)?$userDetail->image:asset('img/avatarEmpty.png')}}" alt="Show banner" />
                                                                 <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                                             </div>
                                                         </div>
@@ -206,7 +206,7 @@ $("#imgInp").change(function() {
 
 $("#delet_photo").click(function()
 {
-    $('#blah').attr('src',"{{ asset('public/img/avatarEmpty.png') }}");
+    $('#blah').attr('src',"{{ asset('img/avatarEmpty.png') }}");
     $('.del_btn').hide();
     $("#imgInp").val("");
 });

@@ -40,7 +40,7 @@
                         @foreach($shows as $show)
 
                         <tr class="gradeX">
-                            <td><img src="{{ (!empty($show->banner))?$show->banner:asset('public/img/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
+                            <td><img src="{{ (!empty($show->banner))?$show->banner:asset('simg/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
                             <td>{{ $show->title }}</td>
                             <td>{{ date('d F, Y', strtotime($show->date)) }}</td>
                             <td>{{ $show->start_time.' - '.$show->end_time }}</td>

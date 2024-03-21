@@ -63,7 +63,7 @@
                             <div class="col-sm-9">
                                 <select multiple id="showselection" name="players[]" placeholder="" class="form-control ctSelectBox1" required="" >
                                     @foreach($players as $player)
-                                  <option  value="{{ $player->id }}" data-image="{{ !empty($player->thumbnail)?$player->thumbnail:asset('public/img/avatarEmpty.png') }}">
+                                  <option  value="{{ $player->id }}" data-image="{{ !empty($player->thumbnail)?$player->thumbnail:asset('img/avatarEmpty.png') }}">
                                     {{ $player->name }}
                                     </option>
                                     @endforeach
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <b>Preview:</b>
-                                        <div class="preview_thumb mt-2"><img id="blah" src="{{ asset('public/img/avatarEmpty.png') }}" alt="Team Logo" />
+                                        <div class="preview_thumb mt-2"><img id="blah" src="{{ asset('img/avatarEmpty.png') }}" alt="Team Logo" />
                                             <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@ $("#imgInp").change(function() {
 
 $("#delet_photo").click(function()
 {
-    $('#blah').attr('src',"{{ asset('public/img/avatarEmpty.png') }}");
+    $('#blah').attr('src',"{{ asset('img/avatarEmpty.png') }}");
     $('.del_btn').hide();
     $("#imgInp").val("");
 });

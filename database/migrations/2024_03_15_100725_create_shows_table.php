@@ -25,6 +25,8 @@ class CreateShowsTable extends Migration
             $table->string('promo_url')->nullable();
             $table->integer('team_1_id');
             $table->integer('team_2_id');
+            $table->longText('team_1_data');
+            $table->longText('team_2_data');
             $table->string('banner')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('live_at')->nullable();

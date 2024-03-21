@@ -36,7 +36,7 @@
                                 @foreach($shows as $show)
                                 <tr class="gradeX" data-id="{{ $show->id }}" data-order="{{ $show->sort_order }}">
                                     <td><i class="fa fa-bars pt-2 font-20"></i></td>
-                                    <td><img src="{{ (!empty($show->show_list->banner))?$show->show_list->banner:asset('public/img/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
+                                    <td><img src="{{ (!empty($show->show_list->banner))?$show->show_list->banner:asset('img/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
                                     <td>{{ $show->show_list->title }}</td>
                                     <td>{{ date('d F, Y', strtotime($show->show_list->date)) }}</td>
                                     <td>{{ $show->show_list->start_time.' - '.$show->show_list->end_time }}</td>
@@ -74,7 +74,7 @@
                                         <div class="col-12">
                                             <select multiple id="showselection" name="shows[]" class="form-control ctSelectBox1" required="">
                                                 @foreach($overall_shows as $show)
-                                              <option value="{{ $show->id }}" data-image="{{ !empty($show->banner)?$show->banner:asset('public/img/avatarEmpty.png') }}" <?php if(in_array($show->id,$selected_shows)){ echo "selected"; } ?>>
+                                              <option value="{{ $show->id }}" data-image="{{ !empty($show->banner)?$show->banner:asset('img/avatarEmpty.png') }}" <?php if(in_array($show->id,$selected_shows)){ echo "selected"; } ?>>
                                                 {{ $show->title }}
                                                 </option>
                                                 @endforeach

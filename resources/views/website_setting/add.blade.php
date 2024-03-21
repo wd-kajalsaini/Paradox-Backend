@@ -14,7 +14,7 @@
             <!-- END Language list-->
         </div>
         <div class="row">
-            <div class="col-sm-12"> 
+            <div class="col-sm-12">
                 <div class="tab-pane" id="api_settings" role="tabpanel">
                     <form action="{{ route('websiteSettingsAdd') }}" id="update_settings" method="POST">
                         <div class="row">
@@ -32,15 +32,15 @@
                                                 <label class="col-form-label">{{__('Logo (Click icon to upload)')}}</label>
                                                 <input class="form-control" type="hidden" id="header_logo_icon" name="header_logo" value="{{ @$website->header_logo}}">
                                                 <div class="uploadAvatarImage">
-                                                    <img src="{{!empty($website->header_logo)?$website->header_logo:asset('public/img/avatarEmpty.png')}}" id="header_logo_avatar" onclick="selectFileWithCKFinder('header_logo_icon', 'header_logo_avatar')">
+                                                    <img src="{{!empty($website->header_logo)?$website->header_logo:asset('img/avatarEmpty.png')}}" id="header_logo_avatar" onclick="selectFileWithCKFinder('header_logo_icon', 'header_logo_avatar')">
                                                 </div>
-                                            </div>                                         
+                                            </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Menu links text')}}</label>
                                                 <textarea name="header_menu_links_text" class="form-control" spellcheck="false">{{ @$website->header_menu_links_text}}</textarea>
-                                            </div>                                       
+                                            </div>
                                         </div>
 
                                     </div>
@@ -57,23 +57,23 @@
                                                 <label class="col-form-label">{{__('Background Image (Click icon to upload)')}}</label>
                                                 <input class="form-control" type="hidden" id="atmosfire_background_image_icon" name="atmosfire_background_image" value="{{ @$website->atmosfire_background_image}}">
                                                 <div class="uploadAvatarImage">
-                                                    <img src="{{!empty($website->atmosfire_background_image)?$website->atmosfire_background_image:asset('public/img/avatarEmpty.png')}}" id="atmosfire_background_image_avatar" onclick="selectFileWithCKFinder('atmosfire_background_image_icon', 'atmosfire_background_image_avatar')">
+                                                    <img src="{{!empty($website->atmosfire_background_image)?$website->atmosfire_background_image:asset('img/avatarEmpty.png')}}" id="atmosfire_background_image_avatar" onclick="selectFileWithCKFinder('atmosfire_background_image_icon', 'atmosfire_background_image_avatar')">
                                                 </div>
-                                            </div>                                         
+                                            </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Title')}}</label>
                                                 <input class="form-control" type="text" name="atmosfire_title" value="{{ @$website->atmosfire_title}}">
-                                            </div>                                        
-                                        </div> 
+                                            </div>
+                                        </div>
 
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Slogan')}}</label>
                                                 <input class="form-control" type="text" name="atmosfire_slogan" value="{{ @$website->atmosfire_slogan}}">
-                                            </div>                                        
-                                        </div>                                  
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row lightBkg p-4 m-05 mt-3">
@@ -84,13 +84,13 @@
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Title')}}</label>
                                                 <input class="form-control" type="text" name="login_title" value="{{ @$website->login_title}}">
-                                            </div>                                       
+                                            </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Description')}}</label>
                                                 <textarea class="form-control" name="login_description">{{ @$website->login_description}}</textarea>
-                                            </div>                                       
+                                            </div>
                                         </div>
 
                                     </div>
@@ -103,13 +103,13 @@
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Title')}}</label>
                                                 <input class="form-control" type="text" name="contact_us_title" value="{{ @$website->contact_us_title}}">
-                                            </div>                                       
+                                            </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Description')}}</label>
                                                 <textarea class="form-control" name="contact_us_description">{{ @$website->contact_us_description}}</textarea>
-                                            </div>                                       
+                                            </div>
                                         </div>
 
                                     </div>
@@ -134,28 +134,28 @@
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Title')}}</label>
                                                 <input class="form-control" type="text" name="download_app_title" value="{{ @$website->download_app_title}}">
-                                            </div>                                       
-                                        </div> 
+                                            </div>
+                                        </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Description')}}</label>
 
                                                 <textarea class="form-control" name="download_app_description">{{ @$website->download_app_description}}</textarea>
-                                            </div>                                       
-                                        </div> 
+                                            </div>
+                                        </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Url to Google Play')}}</label>
                                                 <input class="form-control" type="text" name="download_app_google_play" value="{{ @$website->download_app_google_play}}">
-                                            </div> 
+                                            </div>
                                         </div>
-                                        <div class="col-6">  
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Url to Ios App Store')}}</label>
                                                 <input class="form-control" type="text" name="download_app_ios_store" value="{{ @$website->download_app_ios_store}}">
-                                            </div>   
+                                            </div>
 
-                                        </div>                                    
+                                        </div>
                                     </div>
                                     <!---Google API Inner Row End--->
 
@@ -168,16 +168,16 @@
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('Title')}}</label>
                                                 <input class="form-control" type="text" name="about_app_title" value="{{ @$website->about_app_title}}">
-                                            </div>                                       
+                                            </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="col-form-label">{{__('Image (Click icon to upload)')}}</label>
                                                 <input class="form-control" type="hidden" id="about_app_image_icon" name="about_app_image" value="{{ @$website->about_app_image}}">
                                                 <div class="uploadAvatarImage">
-                                                    <img src="{{!empty($website->about_app_image)?$website->about_app_image:asset('public/img/avatarEmpty.png')}}" id="about_app_image_avatar" onclick="selectFileWithCKFinder('about_app_image_icon', 'about_app_image_avatar')">
+                                                    <img src="{{!empty($website->about_app_image)?$website->about_app_image:asset('img/avatarEmpty.png')}}" id="about_app_image_avatar" onclick="selectFileWithCKFinder('about_app_image_icon', 'about_app_image_avatar')">
                                                 </div>
-                                            </div>                                         
+                                            </div>
                                         </div>
                                     </div>
 
@@ -190,7 +190,7 @@
                                             <div class="form-group">
                                                 <label class="col-form-label">{{ __('All rights reserved text')}}</label>
                                                 <textarea class="form-control" rows="6" name="footer_text">{{ @$website->footer_text}}</textarea>
-                                            </div>                                       
+                                            </div>
                                         </div>
 
                                     </div>

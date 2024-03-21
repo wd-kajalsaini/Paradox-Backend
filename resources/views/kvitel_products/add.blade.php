@@ -61,7 +61,7 @@
                                             <label class="col-form-label">{{__('Image (Click icon to upload)')}}</label>
                                             <input class="form-control" type="hidden" id="extension_icon" name="logo">
                                             <div class="uploadAvatarImage">
-                                                <img src="{{asset('public/img/avatarEmpty.png')}}" id="extension_avatar" onclick="selectFileWithCKFinder('extension_icon', 'extension_avatar')">
+                                                <img src="{{asset('img/avatarEmpty.png')}}" id="extension_avatar" onclick="selectFileWithCKFinder('extension_icon', 'extension_avatar')">
                                             </div>
                                         </div>
                                     </div>

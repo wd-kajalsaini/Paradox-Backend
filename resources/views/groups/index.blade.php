@@ -39,7 +39,7 @@
                                         <td>{{ $group->id }}</td>
                                         <td>{{ $group->name }}</td>
                                         <td>{{ $group->group_members_count }}</td>
-                                        <td><img src="{{ !empty($group->image) && file_exists(public_path().'/images/groups/'.$group->image)?asset('/public/images/groups/'.$group->image):asset('public/img/kvitelEmpty.png')}}" width="80" height="80" class="rounded-circle"></td>
+                                        <td><img src="{{ !empty($group->image) && file_exists(public_path().'/images/groups/'.$group->image)?asset('/images/groups/'.$group->image):asset('img/kvitelEmpty.png')}}" width="80" height="80" class="rounded-circle"></td>
                                         <td>{{ $group->owner['first_name']. " ". $group->owner['last_name'] }}</td>
                                         <td class="text-right d-flex">
                                             <button class="mb-1 btn btn-danger delete_group" type="button" title="Delete" data-id="{{$group->id}}"><i class="fa fa-trash"></i></button>

@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label class="col-form-label">{{__('Group image')}}</label>
                                     <div class="uploadAvatarImage">
-                                        <img src="{{ !empty($groupDetail->image) && file_exists(public_path().'/images/groups/'.$groupDetail->image)?asset('/public/images/groups/'.$groupDetail->image):asset('public/img/kvitelEmpty.png')}}">
+                                        <img src="{{ !empty($groupDetail->image) && file_exists(public_path().'/images/groups/'.$groupDetail->image)?asset('images/groups/'.$groupDetail->image):asset('img/kvitelEmpty.png')}}">
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                         <td>{{ (!empty($member->user_id))?$member->user_id:"" }}</td>
                                         <td>{{ $member->name }}</td>
                                         <td>{{ $member->phone }}</td>
-                                        <td><img src="{{ !empty($member->avatar) && file_exists(public_path().'/images/users/'.$member->avatar)?asset('/public/images/users/'.$member->avatar):asset('public/img/kvitelEmpty.png')}}" width="80" height="80" class="rounded-circle"></td>
+                                        <td><img src="{{ !empty($member->avatar) && file_exists(public_path().'/images/users/'.$member->avatar)?asset('images/users/'.$member->avatar):asset('img/kvitelEmpty.png')}}" width="80" height="80" class="rounded-circle"></td>
                                         <td>{{ ($member->is_owner)?"Yes":"No" }}</td>
                                         <td>{{ ($member->is_admin)?"Yes":"No" }}</td>
                                         <td>{{ ($member->is_can_see)?"Yes":"No" }}</td>

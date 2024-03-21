@@ -27,6 +27,7 @@ use App\SubscribedShow;
 use App\ShowQuestion;
 use App\SectionShowLink;
 use App\ShowBanner;
+use Exception;
 
 class ShowController extends Controller {
 
@@ -45,34 +46,50 @@ class ShowController extends Controller {
     public function add(Request $request){
 
         if ($request->isMethod('post')) {
+            DB::beginTransaction();
+            try{
+
+
 
             $input = $request->all();
             $newData = new Show();
-            $newDataField = collect($input)->forget(['_token', '_method','banner'])->toArray();
+            $newDataField = collect($input)->forget(['_token', '_method'])->toArray();
             foreach ($newDataField as $newDataFieldKey => $newDataFieldValue) {
                 $newDataField[$newDataFieldKey] = (!empty($newDataFieldValue) && !(is_null($newDataFieldValue))) ? $newDataFieldValue : "";
             }
 
             $team1Data = Team::with('players')->find($input['team_1_id'])->toArray();
             $team2Data = Team::with('players')->find($input['team_2_id'])->toArray();
-            $newDataField['team_1_id'] = json_encode($team1Data);
-            $newDataField['team_2_id'] = json_encode($team2Data);
-            // if (!empty($request->file('banner'))) {
-            //     $banner_icon = $request->file('banner');
-            //     $banner_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $banner_icon->getClientOriginalExtension();
-            //     $banner_icondb = "https://paradoxx.s3.us-east-2.amazonaws.com/banner_images/" . $banner_iconFileName;
-            //     $s3 = \Storage::disk('s3');
-            //     $filePath = '/banner_images/' . $banner_iconFileName;
-            //     $banner_icon_image = $s3->put($filePath, file_get_contents($banner_icon), 'public');
-            //     $newDataField['banner'] = $banner_icondb;
-            // }
-            if ($newData->save()) {
-                \Session::flash('message', 'Show added successfully!');
-                \Session::flash('class', 'success');
-                // return redirect()->route('showsListing');
-                return response()->json(['status' => 1, 'message' => "Show added successfully!"]);
-            }else{
+            $newDataField['team_1_data'] = json_encode($team1Data);
+            $newDataField['team_1_data'] = json_encode($team2Data);
+            if (!empty($request->file('banner'))) {
+                $banner_icon = $request->file('banner');
+
+                $banner_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $banner_icon->getClientOriginalExtension();
+                $banner_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users.csv/" . $banner_iconFileName;
+                $s3 = \Storage::disk('s3');
+
+                $filePath = '/banner_images/' . $banner_iconFileName;
+
+                $banner_icon_image = $s3->put($filePath, file_get_contents($banner_icon), 'public');
+
+                $newDataField['banner'] = $filePath;
+
             }
+            $newData->fill($newDataField);
+
+            $newData->save();
+            DB::commit();
+            \Session::flash('message', 'Show added successfully!');
+            \Session::flash('class', 'success');
+            // return redirect()->route('showsListing');
+            return response()->json(['status' => 1, 'message' => "Show added successfully!"]);
+        } catch(Exception $e){
+            dd($e->getMessage());
+            DB::rollback();
+
+        }
+
         }
         $data['page_title'] = 'Add Show';
         $data['link'] = 'Shows';
@@ -97,7 +114,7 @@ class ShowController extends Controller {
             if (!empty($request->file('banner'))) {
                 $banner_icon = $request->file('banner');
                 $banner_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $banner_icon->getClientOriginalExtension();
-                $banner_icondb = "https://paradoxx.s3.us-east-2.amazonaws.com/banner_images/" . $banner_iconFileName;
+                $banner_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users.csv/" . $banner_iconFileName;
                 $s3 = \Storage::disk('s3');
                 $filePath = '/banner_images/' . $banner_iconFileName;
                 $banner_icon_image = $s3->put($filePath, file_get_contents($banner_icon), 'public');

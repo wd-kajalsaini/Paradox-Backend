@@ -132,7 +132,7 @@
                             <div class="col-sm-3 text-right mt-1">
                             </div>
                             <div class="col-sm-9">
-                                <button class="btn theme-blue-btn" type="submit">Submit </button>
+                                <button class="btn theme-blue-btn" type="submit">Submit</button>
                             </div>
                         </div>
                     </div>

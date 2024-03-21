@@ -162,7 +162,7 @@
                                     <select name="team_1_id" id="team_1_dropdown" placeholder="" class="form-control ctSelectBox1" required="" >
                                         <option value="">Choose team</option>
                                         @foreach($teams as $team)
-                                        <option value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('public/img/avatarEmpty.png') }}" <?php if($team->id == $show->team_1_id){echo "selected";} ?>>
+                                        <option value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('img/avatarEmpty.png') }}" <?php if($team->id == $show->team_1_id){echo "selected";} ?>>
                                             {{ $team->title }}
                                         </option>
                                         @endforeach
@@ -178,7 +178,7 @@
                                     <select name="team_2_id" id="team_2_dropdown" placeholder="" class="form-control ctSelectBox1" required="" >
                                         <option value="">Choose team</option>
                                         @foreach($teams as $team)
-                                        <option  value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('public/img/avatarEmpty.png') }}" <?php if($team->id == $show->team_2_id){echo "selected";} ?>>
+                                        <option  value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('img/avatarEmpty.png') }}" <?php if($team->id == $show->team_2_id){echo "selected";} ?>>
                                             {{ $team->title }}
                                         </option>
                                         @endforeach
@@ -197,7 +197,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <b>Preview:</b>
-                                            <div class="preview_thumb mt-2" style="width: 100%;height: 150px;"><img id="blah" src="{{ (!empty($show->banner))?$show->banner:asset('public/img/avatarEmpty.png') }}" alt="your image" />
+                                            <div class="preview_thumb mt-2" style="width: 100%;height: 150px;"><img id="blah" src="{{ (!empty($show->banner))?$show->banner:asset('img/avatarEmpty.png') }}" alt="your image" />
                                                 <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                             </div>
                                         </div>
@@ -252,7 +252,7 @@
 
         $("#delet_photo").click(function()
         {
-            $('#blah').attr('src',"{{ asset('public/img/avatarEmpty.png') }}");
+            $('#blah').attr('src',"{{ asset('img/avatarEmpty.png') }}");
             $('.del_btn').hide();
             $("#imgInp").val("");
         });

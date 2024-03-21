@@ -6,7 +6,7 @@
 <body style="background: #f9f9f9; padding: 0; margin:0; margin-bottom: 60px;">
     <div class="container">
         <header style="background: #000; padding-top: 20px; padding-bottom:50px; text-align: center;">
-            <img src="{{asset('public/img/logo-dark.png')}}" alt="company logo" style="max-width: 300px; margin: auto !important; ">
+            <img src="{{asset('img/logo-dark.png')}}" alt="company logo" style="max-width: 300px; margin: auto !important; ">
         </header>
         <div style="max-width: 1000px; margin: auto; margin-top: -40px; border: 1px solid #f3f3f3; border-bottom: 10px solid #566676; box-shadow:0px 2px 10px 0px rgba(0, 0, 0, 0.08); padding: 20px 20px; background: #fff;">
             <h4 style="text-align: center; font-size: 30px; font-family: 'open-sans',sans-serif; font-weight: 600; text-transform: capitalize; color: rgba(0,0,0,70%); margin-bottom: 25px;">Hello {{ $userName }},</h4>
