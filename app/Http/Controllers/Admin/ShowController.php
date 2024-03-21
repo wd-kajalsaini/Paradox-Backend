@@ -66,14 +66,14 @@ class ShowController extends Controller {
                 $banner_icon = $request->file('banner');
 
                 $banner_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $banner_icon->getClientOriginalExtension();
-                $banner_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users.csv/" . $banner_iconFileName;
+                $banner_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users.csv/banner_images/" . $banner_iconFileName;
                 $s3 = \Storage::disk('s3');
 
                 $filePath = '/banner_images/' . $banner_iconFileName;
 
                 $banner_icon_image = $s3->put($filePath, file_get_contents($banner_icon), 'public');
 
-                $newDataField['banner'] = $filePath;
+                $newDataField['banner'] = $banner_icondb;
 
             }
             $newData->fill($newDataField);
@@ -114,7 +114,7 @@ class ShowController extends Controller {
             if (!empty($request->file('banner'))) {
                 $banner_icon = $request->file('banner');
                 $banner_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $banner_icon->getClientOriginalExtension();
-                $banner_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users.csv/" . $banner_iconFileName;
+                $banner_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/banner_images/" . $banner_iconFileName;
                 $s3 = \Storage::disk('s3');
                 $filePath = '/banner_images/' . $banner_iconFileName;
                 $banner_icon_image = $s3->put($filePath, file_get_contents($banner_icon), 'public');

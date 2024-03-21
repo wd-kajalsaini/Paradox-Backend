@@ -49,7 +49,8 @@ class PlayerController extends Controller {
             if (!empty($request->file('thumbnail'))) {
                 $thumbnail_icon = $request->file('thumbnail');
                 $thumbnail_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $thumbnail_icon->getClientOriginalExtension();
-                $thumbnail_icondb = "https://".AWS_BUCKET.".s3.us-east-2.amazonaws.com/player_images/" . $thumbnail_iconFileName;
+                $thumbnail_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/player_images/" . $thumbnail_iconFileName;
+
                 $s3 = \Storage::disk('s3');
                 $filePath = '/player_images/' . $thumbnail_iconFileName;
                 $thumbnail_icon_image = $s3->put($filePath, file_get_contents($thumbnail_icon), 'public');
@@ -81,7 +82,8 @@ class PlayerController extends Controller {
             if (!empty($request->file('thumbnail'))) {
                 $thumbnail_icon = $request->file('thumbnail');
                 $thumbnail_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $thumbnail_icon->getClientOriginalExtension();
-                $thumbnail_icondb = "https://".AWS_BUCKET.".s3.us-east-2.amazonaws.com/player_images/" . $thumbnail_iconFileName;
+                $thumbnail_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/player_images/" . $thumbnail_iconFileName;
+
                 $s3 = \Storage::disk('s3');
                 $filePath = '/player_images/' . $thumbnail_iconFileName;
                 $thumbnail_icon_image = $s3->put($filePath, file_get_contents($thumbnail_icon), 'public');

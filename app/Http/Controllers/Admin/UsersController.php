@@ -72,7 +72,8 @@ class UsersController extends Controller {
                 if (!empty($request->file('avatar'))) {
                     $avatar_icon = $request->file('avatar');
                     $avatar_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $avatar_icon->getClientOriginalExtension();
-                    $avatar_icondb = "https://paradoxx.s3.us-east-2.amazonaws.com/users/" . $avatar_iconFileName;
+                    $avatar_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users/" . $avatar_iconFileName;
+
                     $s3 = \Storage::disk('s3');
                     $filePath = '/users/' . $avatar_iconFileName;
                     $avatar_icon_image = $s3->put($filePath, file_get_contents($avatar_icon), 'public');
@@ -132,7 +133,9 @@ class UsersController extends Controller {
                     if (!empty($request->file('avatar'))) {
                         $avatar_icon = $request->file('avatar');
                         $avatar_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $avatar_icon->getClientOriginalExtension();
-                        $avatar_icondb = "https://paradoxx.s3.us-east-2.amazonaws.com/users/" . $avatar_iconFileName;
+                        $avatar_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/users/" . $avatar_iconFileName;
+
+
                         $s3 = \Storage::disk('s3');
                         $filePath = '/users/' . $avatar_iconFileName;
                         $avatar_icon_image = $s3->put($filePath, file_get_contents($avatar_icon), 'public');

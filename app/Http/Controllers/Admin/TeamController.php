@@ -47,7 +47,8 @@ class TeamController extends Controller {
             if (!empty($request->file('thumbnail'))) {
                 $team_icon = $request->file('thumbnail');
                 $team_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $team_icon->getClientOriginalExtension();
-                $team_icondb = "https://".AWS_BUCKET.".s3.us-east-2.amazonaws.com/team_logo/" . $team_iconFileName;
+                $team_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/team_logo/" . $team_iconFileName;
+
                 $s3 = \Storage::disk('s3');
                 $filePath = '/team_logo/' . $team_iconFileName;
                 $team_icon_image = $s3->put($filePath, file_get_contents($team_icon), 'public');
@@ -89,7 +90,7 @@ class TeamController extends Controller {
             if (!empty($request->file('thumbnail'))) {
                 $team_icon = $request->file('thumbnail');
                 $team_iconFileName = str_replace(" ", "", str_replace(".", "", microtime())) . '.' . $team_icon->getClientOriginalExtension();
-                $team_icondb = "https://".AWS_BUCKET.".s3.us-east-2.amazonaws.com/team_logo/" . $team_iconFileName;
+                $team_icondb = "https://paradox1.s3.ap-south-1.amazonaws.com/team_logo/" . $team_iconFileName;
                 $s3 = \Storage::disk('s3');
                 $filePath = '/team_logo/' . $team_iconFileName;
                 $team_icon_image = $s3->put($filePath, file_get_contents($team_icon), 'public');
