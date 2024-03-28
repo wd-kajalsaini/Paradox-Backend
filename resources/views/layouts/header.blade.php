@@ -203,7 +203,7 @@
                 <nav class="navbar topnavbar bg-black">
                     <!-- START navbar header-->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#/">
+                        <a class="navbar-brand" href="{{ route('dashboardListing') }}">
                             <div class="brand-logo p-0">
                                 <img class="img-fluid width-1" src="{{ asset('img/logo.png')}}" alt="App Logo">
                             </div>
