@@ -2812,7 +2812,7 @@ fieldset {
   list-style: none; }
 
 .dd-list .dd-list {
-  padding-left: 30px; }
+  padding-left: 10px; }
 
 .dd-collapsed .dd-list {
   display: none; }

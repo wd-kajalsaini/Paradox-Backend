@@ -387,19 +387,19 @@
                     }
 
             })();
-                    @if (Session::has('message'))
-            (function () {
-                'use strict';
+            //         @if (Session::has('message'))
+            // (function () {
+            //     'use strict';
 
-                $(initCustom);
-                function initCustom() {
+            //     $(initCustom);
+            //     function initCustom() {
 
-                    // custom code
-                    $.notify("{{ session('message') }}", {"status": "{{ session('class') }}"});
-                }
+            //         // custom code
+            //         $.notify("{{ session('message') }}", {"status": "{{ session('class') }}"});
+            //     }
 
-            })();
-            @endif
+            // })();
+            // @endif
         </script>
 
         <script src="{{ asset('vendor/modernizr/modernizr.custom.js')}}"></script><!-- STORAGE API-->

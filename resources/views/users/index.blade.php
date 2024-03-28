@@ -2,10 +2,10 @@
 @section('content')
 
 <!-- Main section-->
-<section  class="section-container">
+<section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div class="text-dark">{{__('Application Users')}}</div><!-- START Language list-->
             <!--div class="ml-auto">
                <div class="btn-group"><button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>
@@ -14,23 +14,27 @@
             </div--><!-- END Language list-->
         </div><!-- START cards box-->
 
-        <div class="p-3">
-                    <!-- Table Card Start-->
-                    <div class="card pl-0 pr-0 border">
-                        <div class="card-header">
-                            <div class="col-sm-10 ">
-                                <h4 class="mt-3">All Users</h4>
-                            </div>
-                            <div class="col-sm-2 text-right">
-                                <a href="{{ route('addUser') }}">
-                                    <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button">Create New User</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row ">
 
-                            <div class="col-sm-12">
-                        <div class="table-responsive">
+            <!-- Table Card Start-->
+            <div class="card m-3 border">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <h4 class="mt-0">All Users</h4>
+                        </div>
+                        <div class="col-8 text-right">
+                            <a href="{{ route('addUser') }}">
+                                <button class="btn btn-info" type="button">Create New User</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row ">
+
+                    <div class="col-sm-12">
+                        <div class="table-responsive table_mob">
                             <!-- Datatable Start-->
                             <table class="table table-striped table-hover my-4 w-100" id="datatable1">
                                 <thead>
@@ -79,7 +83,7 @@
                     <!-- Table Card End-->
                 </div>
             </div>
-        </div>
+       
 
     </div>
 </section>
@@ -87,7 +91,7 @@
 
 @section('script')
 <script>
-    $(document).on('click', ".delete_user", function () {
+    $(document).on('click', ".delete_user", function() {
         var thiss = $(this);
         var data_id = thiss.data('id');
         swal({
@@ -102,8 +106,10 @@
                 $.ajax({
                     url: "{{route('applicationUsersListing')}}" + '/delete/' + data_id,
                     type: "DELETE",
-                    data: {"_token": "{{ csrf_token() }}"},
-                    success: function (response) {
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
                         $('#loader').modal('show');
                         var result = response;
                         if (result.status == 1) {
@@ -121,7 +127,7 @@
         })
     })
 
-    $('.active_block').click(function () {
+    $('.active_block').click(function() {
         var thiss = $(this);
         var data_id = $(this).attr('data-id');
         var data_status = $(this).attr('data-status');
@@ -136,14 +142,17 @@
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        }).then(function (willYes) {
+        }).then(function(willYes) {
             if (willYes) {
                 $('#loader').modal('show');
                 $.ajax({
-                    url: "{{route('applicationUsersListing')}}/active_block/"+data_id,
+                    url: "{{route('applicationUsersListing')}}/active_block/" + data_id,
                     method: "POST",
-                    data: {'status': data_status, "_token": "{{ csrf_token() }}"},
-                    success: function (result) {
+                    data: {
+                        'status': data_status,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(result) {
                         $('#loader').modal('hide');
                         if (result.status == 1) {
                             $(".active_block[data-id='" + data_id + "']").hide();

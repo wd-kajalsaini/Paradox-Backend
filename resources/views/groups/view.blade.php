@@ -2,10 +2,10 @@
 @section('content')
 
 <!-- Main section-->
-<section  class="section-container">
+<section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading  px-4">
             <div class="text-dark">{{__('Group Info')}}</div><!-- START Language list-->
             <!--div class="ml-auto">
                <div class="btn-group"><button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>
@@ -58,9 +58,9 @@
 
 
                         <!-- <div class="row p-4"> -->
-                            <div class="col-sm-12 pb-0">
-                                <h4 class="">{{ __('Group contacts and permission')}}</h4>
-                            </div>
+                        <div class="col-sm-12 pb-0">
+                            <h4 class="">{{ __('Group contacts and permission')}}</h4>
+                        </div>
                         <!-- </div> -->
                         <div class="table-responsive">
                             <!-- Datatable Start-->

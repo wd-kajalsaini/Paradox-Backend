@@ -4,21 +4,20 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>Shows related to Banner</div>
         </div>
-        <div class="row m-3">
-
-            <div class="col-md-8 ">
-                <div class="card border">
+        <div class="row mt-3">
+            <div class="col-xl-8 ms-3">
+                <div class="card border m-3">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-sm-10 ">
-                                <h4 class="mt-3">Shows List</h4>
+                                <h4 class="">Shows List</h4>
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive table_mob">
                         <!-- Datatable Start-->
                         <table class="table table-striped my-4 w-100" id="data-table">
                             <thead>
@@ -54,8 +53,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card border">
+            <div class="col-xl-4">
+                <div class="card border m-3">
 
                     <div class="card-header">
                         <div class="row">
@@ -74,11 +73,13 @@
                                         <div class="col-12">
                                             <select multiple id="showselection" name="shows[]" class="form-control ctSelectBox1" required="">
                                                 @foreach($overall_shows as $show)
-                                              <option value="{{ $show->id }}" data-image="{{ !empty($show->banner)?$show->banner:asset('img/avatarEmpty.png') }}" <?php if(in_array($show->id,$selected_shows)){ echo "selected"; } ?>>
-                                                {{ $show->title }}
+                                                <option value="{{ $show->id }}" data-image="{{ !empty($show->banner)?$show->banner:asset('img/avatarEmpty.png') }}" <?php if (in_array($show->id, $selected_shows)) {
+                                                                                                                                                                        echo "selected";
+                                                                                                                                                                    } ?>>
+                                                    {{ $show->title }}
                                                 </option>
                                                 @endforeach
-                                             </select>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -108,15 +109,18 @@
     $('.sortable').sortable({
         update: function() {
 
-            var array  = [];
-            $("#data-table > tbody").find("tr").each(function(index){
+            var array = [];
+            $("#data-table > tbody").find("tr").each(function(index) {
                 orderObject = {
-                    "data_id" : $(this).attr('data-id'),
-                    "data_order" : $(this).attr('data-order')
+                    "data_id": $(this).attr('data-id'),
+                    "data_order": $(this).attr('data-order')
                 }
                 array.push(orderObject);
             })
-            $.post("{{ route('bannerShowSorting') }}",{ orderArray: array, "_token": "{{ csrf_token() }}"});
+            $.post("{{ route('bannerShowSorting') }}", {
+                orderArray: array,
+                "_token": "{{ csrf_token() }}"
+            });
             $.notify("Shows re-order successfully", "success");
         }
     })
@@ -126,19 +130,18 @@
 
         var originalOption = state.element;
 
-        var option = "<span style='display:inline-block;' class='show_box'><img class='mr-2 rounded' src='" + $(originalOption).data('image') + "' /></span> "+ state.text;
+        var option = "<span style='display:inline-block;' class='show_box'><img class='mr-2 rounded' src='" + $(originalOption).data('image') + "' /></span> " + state.text;
         return option;
         //console.log(state.text);
     }
 
     $(".ctSelectBox1").select2({
-    	templateResult: formatState,
-    	//formatSelection: format,
+        templateResult: formatState,
+        //formatSelection: format,
         placeholder: "Select show(s)",
-    	escapeMarkup: function(m)
-    	{
-    		return m;
-    	}
+        escapeMarkup: function(m) {
+            return m;
+        }
     });
 </script>
 @endsection

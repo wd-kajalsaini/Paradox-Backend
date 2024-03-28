@@ -1,23 +1,17 @@
 
-<div class="">
-    <div class="">
         <div class="row">
-            <div class="col-8">
-
-            </div>
-            <div class="col-4 text-right">
+            <div class="col-12 text-right">
                 <button class="btn btn-danger" onclick="goBack()">Close</button>
                 <button type="submit" class="btn btn-info" form="content_field_form">Save</button>
             </div>
         </div>
-    </div>
     <form method="POST" id="content_field_form" action="{{route('contentManagementListing')}}" data-parsley-validate="">
         @csrf
         <div class="card-body">
             <div class="row">
                 <input type="hidden" name="app_content_id" value="<?php echo $content['id']; ?>">
 
-                <div class="col-12 mt-3 lightBkg p-4">
+                <div class="col-12 mt-3 lightBkg p-2 p-md-4">
                     <h4 class="">English</h4>
                     {{-- @if(in_array('title_english',$selected_fields)) --}}
                     @if(isset($content['field_data']['title_english']))
@@ -114,7 +108,7 @@
             </div>
         </div>
     </form>
-</div>
+
 
 
 

@@ -5,7 +5,7 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>{{__('Dashboard')}}  </div>
         </div>
         @if (Session::has('change'))
@@ -16,7 +16,7 @@
         @endif
         <div class="p-3">
             <div class="row">
-                <div class="col-xl-3">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-danger-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-warning-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-green-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 ">
+                <div class="col-md-6 col-xl-3 ">
                     <!-- START card-->
                     <div class="card bg-primary-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -92,26 +92,25 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body mt_-4">
-                            <div class="chart-bar-dashboard flot-chart mt-4" style="height: 450px"></div>
+
+                        <div class="card-body p-0 p-md-2">
+                            <div class="chart-bar-dashboard flot-chart " style="height: 450px"></div>
                         </div>
                     </div>
                     <!-- Table Card End-->
                 </div>
 
-                <div class="col-xl-12">
+
                     <!-- Table Card Start-->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-sm-10 "><h4 class="mt-3">Unread contact us table</h4></div>
-                                <div class="col-sm-2 text-right ">
+                    <div class="card p-2 p-md-4">
+                            <div class="row align-items-center">
+                                <div class="col-8"><h4 class="mb-0">Unread contact us table</h4></div>
+                                <div class="col-4 text-right ">
                                     <a href="{{route('inboxListing')}}"><button class="btn btn-primary btn-sm theme-btn " type="button">View All</button></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body ">
+
+                        <div class="card-body p-0">
                             <!-- Datatable Start-->
                             <table class="table table-striped table-hover my-4 w-100" id="datatable1">
                                 <thead>
@@ -137,7 +136,7 @@
                         </div>
                     </div>
                     <!-- Table Card End-->
-                </div>
+
             </div>
         </div>
     </div>

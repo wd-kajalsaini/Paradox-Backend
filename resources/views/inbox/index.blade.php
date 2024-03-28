@@ -2,18 +2,20 @@
 @section('content')
 
 <style type="text/css">
-/*    table.dataTable tbody th.focus, table.dataTable tbody td.focus {
+    /*    table.dataTable tbody th.focus, table.dataTable tbody td.focus {
         box-shadow: none !important;
         outline:0!important;
     }*/
     .modal-header {
         justify-content: normal !important;
     }
-    .font-12{
+
+    .font-12 {
         margin-top: 5px;
         font-size: 12px;
     }
-/*    table#datatable1 tr td {
+
+    /*    table#datatable1 tr td {
         border-top: 1px solid #ccc;
         background: #f5f5f5;
     }
@@ -27,7 +29,7 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading  px-4">
             <div>{{__('Inbox')}}</div><!-- START Language list-->
             <!-- END Language list-->
         </div><!-- START cards box-->
@@ -41,7 +43,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @endif 
+                @endif
 
 
                 <div class="row">
@@ -66,8 +68,8 @@
                                         <tbody>
                                             @foreach($inbox_data as $messages)
                                             <tr>
-                                                <td>{{ $messages->id }}</td>  
-                                                <td>{{ $messages->username }}</td>   
+                                                <td>{{ $messages->id }}</td>
+                                                <td>{{ $messages->username }}</td>
                                                 <td>{{ date('d/m/Y',strtotime($messages->created_at)) }}</td>
                                                 <td>{{ $messages->subject }}</td>
                                                 <td class="read_status">{{ ($messages->is_read)?"No":"Yes" }}</th>
@@ -96,10 +98,12 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">       
-                <img class="mb-mail-avatar mr-2" alt="Mail Avatar" src="img/user/01.jpg" style="width: 30px"> 
-                <div><h4 class="m-0">Evelyn Holmes</h4>
-                    <span class="font-12" >12Feb,2020 10:23PM</span></div>
+            <div class="modal-header">
+                <img class="mb-mail-avatar mr-2" alt="Mail Avatar" src="img/user/01.jpg" style="width: 30px">
+                <div>
+                    <h4 class="m-0">Evelyn Holmes</h4>
+                    <span class="font-12">12Feb,2020 10:23PM</span>
+                </div>
             </div>
             <div class="modal-body" style="max-height: 300px;">
                 <b>Hi Bro...</b>
@@ -118,14 +122,17 @@
 
 @section('script')
 <script>
-    $('#datatable1').on('click', '.show_message', function () {
+    $('#datatable1').on('click', '.show_message', function() {
         var thiss = $(this);
         var data_id = $(this).data('id');
         $.ajax({
             url: "{{ route('markReadAjax') }}",
             type: "POST",
-            data: {"data_id": data_id, "_token": "{{ csrf_token() }}"},
-            success: function (response) {
+            data: {
+                "data_id": data_id,
+                "_token": "{{ csrf_token() }}"
+            },
+            success: function(response) {
                 $(document).find(".modal-content").html(response);
                 $("#myModal").modal();
                 thiss.parents('tr').find('td.read_status').html('No');

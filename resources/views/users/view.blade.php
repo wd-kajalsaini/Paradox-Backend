@@ -132,10 +132,10 @@
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Avatar')}}</label>
                                                     <div class="row">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-md-6">
                                                             <input type='file' id="imgInp" name="avatar" />
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-md-6">
                                                             <b>Preview:</b>
                                                             <div class="preview_thumb mt-2"><img id="blah" src="{{ !empty($userDetail->image) && @getimagesize($userDetail->image)?$userDetail->image:asset('img/avatarEmpty.png')}}" alt="Show banner" />
                                                                 <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
@@ -144,9 +144,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 text-right">
+                                            <div class="col-12 text-center">
                                                 <input type="hidden" name="general_form_submit" value="Update">
-                                                <button class="btn btn-info btn-lg" type="submit" name="general_form_submit">{{__('Update')}}</button>
+                                                <button class="btn btn-info" type="submit" name="general_form_submit">{{__('Update')}}</button>
                                             </div>
                                         </div>
                                     </form>

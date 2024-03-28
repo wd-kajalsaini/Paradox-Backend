@@ -5,9 +5,9 @@
     <!-- Page content-->
     <div class="content-wrapper">
 
-        <div class="content-heading">
+        <div class="content-heading px-4 d-block d-md-flex">
             <div>{{__('Push Notification')}} / {{__('Send New')}}</div><!-- START Delete Btn -->
-            <div class="ml-auto">
+            <div class="ml-auto mt-3 mt-md-0 text-end">
                 <button class="btn btn-info btn-lg" type="submit" form="send_notification">{{ __('Send')}}</button>
                 <button class="btn btn-info btn-lg" type="button" onclick="goBack()">{{ __('Back')}}</button>
             </div><!-- END  Delete Btn-->
