@@ -125,7 +125,7 @@ class UserController extends Controller {
             }
             $userData->fill($fillableData);
             $userData->save();
-            $userData->token = $userData->createToken('paradox_app')->accessToken;
+            $userData->token = $userData->createToken('paradoxa')->accessToken;
             return response()->json(['status' => 1, 'message' => 'Email verified successfully.', 'data' => $userData]);
         } else {
             return response()->json(['status' => 0, 'message' => "Wrong code provided."]);
