@@ -34,7 +34,7 @@
 <section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>{{ __('User Info') }}</div>
             <!-- START Language list-->
             <!--div class="ml-auto">

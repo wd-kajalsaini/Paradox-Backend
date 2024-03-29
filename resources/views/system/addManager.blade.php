@@ -3,15 +3,15 @@
 
 <!---Side Bar End-->
 <!-- Main section-->
-<section  id="sectionManager"class="section-container">
+<section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
         <!-- Start ManagerInfo Form --->
         <form action="{{route('addManagerAdd')}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="content-heading">
+            <div class="content-heading px-4 d-block d-md-flex ">
                 <div>{{__('System')}}/{{__('Managers')}}/{{__('Add')}}</div><!-- START Language list-->
-                <div class="ml-auto">
+                <div class="ml-auto mt-4 mt-md-2">
                     <button class="btn btn-info btn-lg  " type="submit">{{__('Save')}}</button>
                     <button class="btn btn-info btn-lg " type="button" onclick="goBack()">{{__('Back')}}</button>
                 </div><!-- END Language list-->
@@ -30,9 +30,9 @@
                 <div class="tab-content p-0 bg-white">
                     <div class="tab-pane active" id="home" role="tabpanel">
                         <div class="row p-4">
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <!-- START card-->
-                                <div class="card p-4 b-01">
+                                <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">{{__('Login Info')}}</h3>
                                     </div>
@@ -45,7 +45,7 @@
                                                     <select class="form-control @error('manager_type') is-invalid @enderror" name="manager_type" style="border-right: 1px solid  red;" required>
                                                         <option value="">{{__('Choose')}}....</option>
                                                         @foreach($managersTypes as $managersType)
-                                                        <option value="{{$managersType->id}}" {{ old('manager_type') == $managersType->id ?"selected":""  }} >{{$managersType->name}}</option>
+                                                        <option value="{{$managersType->id}}" {{ old('manager_type') == $managersType->id ?"selected":""  }}>{{$managersType->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if ($errors->has('manager_type'))
@@ -54,7 +54,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <label class="col-form-label" >{{__('Status')}}</label>
+                                                <label class="col-form-label">{{__('Status')}}</label>
                                                 <select class="form-control @error('status') is-invalid @enderror" style="border-right: 1px solid  red;" name="status" required>
                                                     <option value="">{{__('Choose')}}....</option>
                                                     <option value="Active" {{ old('status') == "Active"?"selected":""  }}>{{__('Active')}}</option>
@@ -67,7 +67,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Password')}}</label>
-                                                    <input class="form-control @error('password') is-invalid @enderror" name="password" style="border-right: 1px solid  red;" value="{{old('password')}}" type="password"  required>
+                                                    <input class="form-control @error('password') is-invalid @enderror" name="password" style="border-right: 1px solid  red;" value="{{old('password')}}" type="password" required>
 
                                                     @if ($errors->has('password'))
                                                     <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -77,13 +77,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Confirm Password')}}</label>
-                                                    <input class="form-control @error('confirm_password') is-invalid @enderror" style="border-right: 1px solid  red;" name="confirm_password" value="{{old('confirm_password')}}" type="password"  required>
+                                                    <input class="form-control @error('confirm_password') is-invalid @enderror" style="border-right: 1px solid  red;" name="confirm_password" value="{{old('confirm_password')}}" type="password" required>
                                                     @if ($errors->has('confirm_password'))
                                                     <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12" style="    margin-top: -35px;">
+                                            <div class="col-sm-12 mt-4">
                                                 <span class=" text-muted">{{__('Password format')}}</span>
                                             </div>
                                         </div>
@@ -93,9 +93,9 @@
                             </div>
 
 
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <!-- START card-->
-                                <div class="card p-4 b-01">
+                                <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">{{__('User Info')}}</h3>
                                     </div>
@@ -104,7 +104,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('First Name')}}</label>
-                                                    <input class="form-control @error('first_name') is-invalid @enderror" style="border-right: 1px solid  red;" name="first_name" type="text"  value="{{old('first_name')}}" required>
+                                                    <input class="form-control @error('first_name') is-invalid @enderror" style="border-right: 1px solid  red;" name="first_name" type="text" value="{{old('first_name')}}" required>
                                                     @if ($errors->has('first_name'))
                                                     <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                                     @endif
@@ -122,7 +122,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Phone Number')}}</label>
-                                                    <input class="form-control @error('phone') is-invalid @enderror" style="border-right: 1px solid  red;" name="phone" type="phone" value="{{old('phone')}}"  required>
+                                                    <input class="form-control @error('phone') is-invalid @enderror" style="border-right: 1px solid  red;" name="phone" type="phone" value="{{old('phone')}}" required>
                                                     @if ($errors->has('phone'))
                                                     <span class="text-danger">{{ $errors->first('phone') }}</span>
                                                     @endif
