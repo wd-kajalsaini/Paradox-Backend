@@ -3,7 +3,7 @@
 <section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading px-4">
+        <div class="content-heading px-4 ">
             <div>{{ __('App Content Management') }}</div>
             <!-- START Language list-->
             <!--div class="ml-auto">
@@ -43,7 +43,7 @@
                                                 @foreach($app_contents as $app_content)
                                                 <li class="dd-item dd3-item ">
                                                     <div class="dd3-content">{{ __($app_content->name) }}
-                                                        <div class="form-group float-right">
+                                                        <div class="form-group float-right m-0">
                                                             <button class="btn btn-info p-0 btn_p editScreenText" data-id="{{ $app_content->id }}"><i class="fa fa-edit"></i>
                                                             </button>
                                                         </div>

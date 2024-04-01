@@ -1,7 +1,7 @@
 @extends('layouts.header')
 @section('content')
 
-<section id="sectionManager"class="section-container">
+<section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
 
@@ -27,27 +27,27 @@
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-12 col-sm-2 text-right">
+                                    <div class="col-4 col-md-2">
                                         <label class="col-form-label">{{ __('Notification Title')}}</label>
                                     </div>
-                                    <div class="col-12 col-sm-10">
+                                    <div class="col-8 col-md-10">
                                         <input class="form-control" type="text" name="title" required="">
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-12 col-sm-2 text-right">
+                                    <div class="col-4 col-md-2">
                                         <label class="col-form-label">{{ __('Notification Description')}}</label>
                                     </div>
-                                    <div class="col-12 col-sm-10">
+                                    <div class="col-8 col-md-10">
                                         <textarea class="form-control" rows="3" name="text" required></textarea>
                                         <input type="hidden" name="whom_send[]" value="subscribed_users">
                                     </div>
                                 </div>
                                 <!-- <div class="row mt-3">
-                                    <div class="col-12 col-sm-2 text-right">
+                                    <div class="col-4 col-md-2">
                                         <label class="col-form-label">{{ __('Notification Sent to')}}</label>
                                     </div>
-                                    <div class="col-12 col-sm-10">
+                                    <div class="col-8 col-md-10">
                                         <select class="form-control" id="select2-3" multiple="multiple" name="whom_send[]" required>
                                             <option value="subscribed_users">Send to All </option>
                                             @foreach($users as $user)
