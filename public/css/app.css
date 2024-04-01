@@ -5235,6 +5235,9 @@ background: #F5F7FA;
 font-size: 14px;
 font-weight: 500;
 color: #000;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 
 .mainList
@@ -6468,6 +6471,11 @@ width: 100%;
 }
 #datatable1_filter input.form-control.form-control-sm {
 width: 94%;
+}
+table#datatable1 tr th,
+table#datatable1 tr td {
+    padding-left: 6px;
+    padding-right: 25px;
 }
 
 }

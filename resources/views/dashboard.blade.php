@@ -5,8 +5,8 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading px-4">
-            <div>{{__('Dashboard')}}  </div>
+        <div class="content-heading  px-4">
+            <div>{{__('Dashboard')}} </div>
         </div>
         @if (Session::has('change'))
         <div class="alert alert-{{session('class')}} alert-dismissible text-center">
@@ -16,7 +16,7 @@
         @endif
         <div class="p-3">
             <div class="row">
-                <div class="col-md-6 col-xl-3">
+                <div class="col-md-6 col-xl-3 R">
                     <!-- START card-->
                     <div class="card bg-danger-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3">
+                <div class="col-md-6 col-xl-3 ">
                     <!-- START card-->
                     <div class="card bg-warning-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3">
+                <div class="col-md-6 col-xl-3 ">
                     <!-- START card-->
                     <div class="card bg-green-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3 ">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-primary-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
@@ -73,42 +73,45 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-lg-8 col-sm-12 "><h4 class="mt-3">User activity graph</h4>
+                                <div class="col-lg-8 col-sm-12 ">
+                                    <h4 class="mt-3">User activity graph</h4>
                                 </div>
                                 <div class="col-lg-4 col-sm-12">
                                     <select class="form-control" id="graph_month_dropdown">
-                                        <option value="01" <?php echo (date('m') == 1)?"selected":""; ?>>January</option>
-                                        <option value="02" <?php echo (date('m') == 2)?"selected":""; ?>>February</option>
-                                        <option value="03" <?php echo (date('m') == 3)?"selected":""; ?>>March</option>
-                                        <option value="04" <?php echo (date('m') == 4)?"selected":""; ?>>April</option>
-                                        <option value="05" <?php echo (date('m') == 5)?"selected":""; ?>>May</option>
-                                        <option value="06" <?php echo (date('m') == 6)?"selected":""; ?>>June</option>
-                                        <option value="07" <?php echo (date('m') == 7)?"selected":""; ?>>July</option>
-                                        <option value="08" <?php echo (date('m') == 8)?"selected":""; ?>>August</option>
-                                        <option value="09" <?php echo (date('m') == 9)?"selected":""; ?>>September</option>
-                                        <option value="10" <?php echo (date('m') == 10)?"selected":""; ?>>October</option>
-                                        <option value="11" <?php echo (date('m') == 11)?"selected":""; ?>>November</option>
-                                        <option value="12" <?php echo (date('m') == 12)?"selected":""; ?>>December</option>
+                                        <option value="01" <?php echo (date('m') == 1) ? "selected" : ""; ?>>January</option>
+                                        <option value="02" <?php echo (date('m') == 2) ? "selected" : ""; ?>>February</option>
+                                        <option value="03" <?php echo (date('m') == 3) ? "selected" : ""; ?>>March</option>
+                                        <option value="04" <?php echo (date('m') == 4) ? "selected" : ""; ?>>April</option>
+                                        <option value="05" <?php echo (date('m') == 5) ? "selected" : ""; ?>>May</option>
+                                        <option value="06" <?php echo (date('m') == 6) ? "selected" : ""; ?>>June</option>
+                                        <option value="07" <?php echo (date('m') == 7) ? "selected" : ""; ?>>July</option>
+                                        <option value="08" <?php echo (date('m') == 8) ? "selected" : ""; ?>>August</option>
+                                        <option value="09" <?php echo (date('m') == 9) ? "selected" : ""; ?>>September</option>
+                                        <option value="10" <?php echo (date('m') == 10) ? "selected" : ""; ?>>October</option>
+                                        <option value="11" <?php echo (date('m') == 11) ? "selected" : ""; ?>>November</option>
+                                        <option value="12" <?php echo (date('m') == 12) ? "selected" : ""; ?>>December</option>
                                     </select>
                                 </div>
                             </div>
 
-                        <div class="card-body p-0 p-md-2">
-                            <div class="chart-bar-dashboard flot-chart " style="height: 450px"></div>
+                            <div class="card-body p-0 p-md-4">
+                                <div class="chart-bar-dashboard flot-chart " style="height: 450px"></div>
+                            </div>
                         </div>
+                        <!-- Table Card End-->
                     </div>
-                    <!-- Table Card End-->
-                </div>
 
 
                     <!-- Table Card Start-->
                     <div class="card p-2 p-md-4">
-                            <div class="row align-items-center">
-                                <div class="col-8"><h4 class="mb-0">Unread contact us table</h4></div>
-                                <div class="col-4 text-right ">
-                                    <a href="{{route('inboxListing')}}"><button class="btn btn-primary btn-sm theme-btn " type="button">View All</button></a>
-                                </div>
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h4 class="mb-0">Unread contact us table</h4>
                             </div>
+                            <div class="col-4 text-right ">
+                                <a href="{{route('inboxListing')}}"><button class="btn btn-primary btn-sm theme-btn " type="button">View All</button></a>
+                            </div>
+                        </div>
 
                         <div class="card-body p-0">
                             <!-- Datatable Start-->
@@ -137,9 +140,9 @@
                     </div>
                     <!-- Table Card End-->
 
+                </div>
             </div>
         </div>
-    </div>
 
 </section>
 @endsection
@@ -152,8 +155,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <img class="mb-mail-avatar mr-2" alt="Mail Avatar" src="img/user/01.jpg" style="width: 30px">
-                <div><h4 class="m-0">Evelyn Holmes</h4>
-                    <span class="font-12" >12Feb,2020 10:23PM</span></div>
+                <div>
+                    <h4 class="m-0">Evelyn Holmes</h4>
+                    <span class="font-12">12Feb,2020 10:23PM</span>
+                </div>
             </div>
             <div class="modal-body" style="max-height: 300px;">
                 <b>Hi Bro...</b>
@@ -181,109 +186,115 @@
 <script src="{{ asset('vendor/jquery.flot.spline/jquery.flot.spline.js')}}"></script>
 
 <script>
-$('#datatable1').on('click', '.show_message', function () {
-    var thiss = $(this);
-    var data_id = $(this).data('id');
-    $.ajax({
-        url: "{{ route('markReadAjax') }}",
-        type: "POST",
-        data: {"data_id": data_id, "_token": "{{ csrf_token() }}"},
-        success: function (response) {
-            $(document).find(".modal-content").html(response);
-            $("#myModal").modal();
-            thiss.parents('tr').find('td.read_status').html('No');
-        }
+    $('#datatable1').on('click', '.show_message', function() {
+        var thiss = $(this);
+        var data_id = $(this).data('id');
+        $.ajax({
+            url: "{{ route('markReadAjax') }}",
+            type: "POST",
+            data: {
+                "data_id": data_id,
+                "_token": "{{ csrf_token() }}"
+            },
+            success: function(response) {
+                $(document).find(".modal-content").html(response);
+                $("#myModal").modal();
+                thiss.parents('tr').find('td.read_status').html('No');
+            }
+        });
     });
-});
 
 
-function initFlotBar(graph_data) {
+    function initFlotBar(graph_data) {
 
-//    var data = [{
-//            "label": "Active Users",
-//            "color": "#9cd159",
-//            "data": [
-//                [1, 27],
-//                [2, 82],
-//                [3, 56],
-//                [4, 14],
-//                [5, 28],
-//                [6, 77],
-//                [7, 23],
-//                [8, 49],
-//                [9, 81],
-//                [10, 20],
-//            ]
-//        }];
-    var data = [{
+        //    var data = [{
+        //            "label": "Active Users",
+        //            "color": "#9cd159",
+        //            "data": [
+        //                [1, 27],
+        //                [2, 82],
+        //                [3, 56],
+        //                [4, 14],
+        //                [5, 28],
+        //                [6, 77],
+        //                [7, 23],
+        //                [8, 49],
+        //                [9, 81],
+        //                [10, 20],
+        //            ]
+        //        }];
+        var data = [{
             "label": "Active Users",
             "color": "#9cd159",
             "data": graph_data
         }];
-    console.log(graph_data);
-    var options = {
-        series: {
-            bars: {
-                align: 'center',
-                lineWidth: 0,
-                show: true,
-                barWidth: 0.6,
-                fill: 0.9
-            }
-        },
-        grid: {
-            borderColor: '#eee',
-            borderWidth: 1,
-            hoverable: true,
-            backgroundColor: '#fcfcfc'
-        },
-        tooltip: true,
-        tooltipOpts: {
-            content: function (label, x, y) {
-                return x + ' : ' + y;
-            }
-        },
-        xaxis: {
-            tickColor: '#fcfcfc',
-            mode: 'categories'
-        },
-        yaxis: {
-            // position: 'right' or 'left'
-            tickColor: '#eee'
-        },
-        shadowSize: 0
-    };
+        console.log(graph_data);
+        var options = {
+            series: {
+                bars: {
+                    align: 'center',
+                    lineWidth: 0,
+                    show: true,
+                    barWidth: 0.6,
+                    fill: 0.9
+                }
+            },
+            grid: {
+                borderColor: '#eee',
+                borderWidth: 1,
+                hoverable: true,
+                backgroundColor: '#fcfcfc'
+            },
+            tooltip: true,
+            tooltipOpts: {
+                content: function(label, x, y) {
+                    return x + ' : ' + y;
+                }
+            },
+            xaxis: {
+                tickColor: '#fcfcfc',
+                mode: 'categories'
+            },
+            yaxis: {
+                // position: 'right' or 'left'
+                tickColor: '#eee'
+            },
+            shadowSize: 0
+        };
 
-    var chart = $('.chart-bar-dashboard');
-    if (chart.length)
-        $.plot(chart, data, options);
+        var chart = $('.chart-bar-dashboard');
+        if (chart.length)
+            $.plot(chart, data, options);
 
-}
-
-//(function () {
-//    'use strict';
-//
-//
-//    $(initFlotBar)
-//
-//
-//
-//})();
-$(window).on('load',function(){
-initFlotBar(<?php print_r($active_users);?>);
-})
-
-
-$('#graph_month_dropdown').on('change', function () {
-    var selected_month = $(this).val();
-    $.ajax({
-     url:"{{route('graphDataAjax')}}",
-     type:"POST",
-     data:{"month":selected_month, "_token": "{{ csrf_token() }}"},
-     success : function(response){
-         initFlotBar(JSON.parse(response));
     }
+
+    //(function () {
+    //    'use strict';
+    //
+    //
+    //    $(initFlotBar)
+    //
+    //
+    //
+    //})();
+    $(window).on('load', function() {
+        initFlotBar(<?php print_r($active_users); ?>);
     })
-})
+
+
+    $('#graph_month_dropdown').on('change', function() {
+        var selected_month = $(this).val();
+        $.ajax({
+            url: "{{route('graphDataAjax')}}",
+            type: "POST",
+            data: {
+                "month": selected_month,
+                "_token": "{{ csrf_token() }}"
+            },
+            success: function(response) {
+                initFlotBar(JSON.parse(response));
+            }
+        })
+    })
 </script>
 @endsection

@@ -13,7 +13,7 @@
         </div><!-- START cards box-->
 
         <div class="p-3">
-            <div class="p-0">
+            <div class="">
                 @if (Session::has('import_error'))
                 <div class="alert alert-warning alert-dismissible show" role="alert">
                     <?php print_r(Session::get('import_error')); ?>
@@ -26,12 +26,12 @@
 
                 <div class="row">
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 ">
                         <!-- Table Card Start-->
                         <div class="card pl-0 pr-0 border">
                             <div class=" ">
                                 <!-- Datatable Start-->
-                                <div class="table-responsive">
+                                <div class="table-responsive border-0">
                                     <table class="table table-striped table-hover my-4 w-100" id="datatable1">
                                         <thead>
                                             <tr>
