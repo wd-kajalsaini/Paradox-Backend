@@ -163,9 +163,8 @@
                                 <div class="col-4 col-md-2">
                                     <label for="validationCustom01">Team 1</label>
                                 </div>
-                                <div class="col-8 col-md-10">
-                                    <select name="team_1_id" id="team_1_dropdown" placeholder="" class="form-control ctSelectBox1" required="">
-                                        <option value="">Choose team</option>
+                                <div class="col-sm-9">
+                                    <select name="team_1_id" id="team_1_dropdown" placeholder="" class="form-control ctSelectBox1" required="" >
                                         @foreach($teams as $team)
                                         <option value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('img/avatarEmpty.png') }}" <?php if ($team->id == $show->team_1_id) {
                                                                                                                                                             echo "selected";
@@ -181,9 +180,8 @@
                                 <div class="col-4 col-md-2">
                                     <label for="validationCustom01">Team 2</label>
                                 </div>
-                                <div class="col-8 col-md-10">
-                                    <select name="team_2_id" id="team_2_dropdown" placeholder="" class="form-control ctSelectBox1" required="">
-                                        <option value="">Choose team</option>
+                                <div class="col-sm-9">
+                                    <select name="team_2_id" id="team_2_dropdown" placeholder="" class="form-control ctSelectBox1" required="" >
                                         @foreach($teams as $team)
                                         <option value="{{ $team->id }}" data-image="{{ !empty($team->logo)?$team->logo:asset('img/avatarEmpty.png') }}" <?php if ($team->id == $show->team_2_id) {
                                                                                                                                                             echo "selected";

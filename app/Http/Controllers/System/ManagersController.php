@@ -39,6 +39,7 @@ class ManagersController extends Controller
     //add manager
     public function addManager(Request $request)
     {
+
         if($request->isMethod('post'))
         {
 
@@ -60,7 +61,6 @@ class ManagersController extends Controller
                 'confirm_password.same' => 'Confirm Password  should match the Password'
             ]);
             $managerType = ManagerTypes::where('id',$request->manager_type)->first();
-
             $managerData = collect($request->all())->forget(['_token','manager_type','confirm_password'])->put('type_id',$request->manager_type)->put('password',Hash::make($request->password))->put('type',$managerType->name)->toArray();
             if ($request->hasFile('image')) {
                 $image  = $request->file('image');
@@ -74,7 +74,7 @@ class ManagersController extends Controller
             {
                 $managerData['image']="";
             }
-
+            $managerData['role'] =$managerType ->name;
             $manager = new Managers();
             $manager->fill($managerData);
 
