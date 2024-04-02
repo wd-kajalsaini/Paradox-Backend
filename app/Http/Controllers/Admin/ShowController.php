@@ -255,7 +255,7 @@ class ShowController extends Controller {
                 \Session::flash('class', 'success');
                 return redirect()->route('showQuestions',$id);
             } catch (Exception $e) {
-                sDB::rollBack();
+                DB::rollBack();
                 return response()->json(['status' => 0, 'message' => "Something went wrong"]);
             }
         }
