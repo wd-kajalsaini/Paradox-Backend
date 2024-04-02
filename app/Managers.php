@@ -85,7 +85,6 @@ class Managers extends Authenticatable
         $key = $this->secret_token_key;
         try {
             $decoded = JWT::decode($jwt, $key, array('HS256'));
-            dd($decoded);
             if (isset($decoded->user_id)) {
                 return $decoded->user_id;
             }
