@@ -5,7 +5,7 @@
 <section  class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div class="text-dark">{{__('Groups')}}</div><!-- START Language list-->
             <!--div class="ml-auto">
                <div class="btn-group"><button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>

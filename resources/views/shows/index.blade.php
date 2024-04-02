@@ -4,24 +4,24 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>Shows</div>
             <!-- START Language list-->
         </div>
         <div class="card m-3 border">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-10 ">
-                        <h4 class="mt-3">All Shows</h4>
+                <div class="row align-items-center">
+                    <div class="col-4 ">
+                        <h4 class="m-0">All Shows</h4>
                     </div>
-                    <div class="col-sm-2 text-right">
+                    <div class="col-8 text-right">
                         <a href="{{ route('addShowAdd')}}">
-                            <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button">Create New Show</button>
+                            <button class="btn  btn-info" type="button">Create New Show</button>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="">
+            <div class=" table-responsive table_mob">
                 <!-- Datatable Start-->
                 <table class="table table-striped my-4 w-100" id="datatable1">
                     <thead>

@@ -4,24 +4,24 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>App Sections</div>
             <!-- START Language list-->
         </div>
         <div class="card m-3 border">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-10 ">
+                <div class="row align-items-center">
+                    <div class="col-5">
                         <h4 class="mt-3">All Sections</h4>
                     </div>
-                    <div class="col-sm-2 text-right">
+                    <div class="col-7 text-right">
                         <a href="{{ route('addAppSectionsAdd')}}">
-                            <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button">Create New Section</button>
+                            <button class="btn btn-info" type="button">Create New Section</button>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="">
+            <div class="table-responsive table_mob">
                 <!-- Datatable Start-->
                 <table class="table table-striped my-4 w-100" id="data-table">
                     <thead>
@@ -67,50 +67,55 @@
 
 @section('script')
 <script>
-$('.sortable').sortable({
-    update: function() {
-        var array  = [];
-        $("#data-table > tbody").find("tr").each(function(index){
-            orderObject = {
-                "data_id" : $(this).attr('data-id'),
-                "data_order" : $(this).attr('data-order')
-            }
-            array.push(orderObject);
-        })
-        $.post("{{ route('appSectionsSorting') }}",{ orderArray: array, "_token": "{{ csrf_token() }}"});
-        $.notify("Section re-order successfully", "success");
-    }
-})
-$(document).on('click', ".delete_section", function () {
-    var thiss = $(this);
-    var data_id = thiss.data('id');
-    swal({
-        title: "Are you sure!",
-        text: "It will permanently delete this section",
-        icon: "warning",
-        buttons: ["Cancel", "Yes"],
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            $.ajax({
-                url: "{{route('appSectionsListing')}}" + '/delete/' + data_id,
-                type: "DELETE",
-                data: {"_token": "{{ csrf_token() }}"},
-                success: function (response) {
-                    var result = response;
-                    if (result.status == 1) {
-                        window.location = "";
-                    } else {
-                        swal('Error', result.message, 'error');
-                    }
-                    return false;
-                },
+    $('.sortable').sortable({
+        update: function() {
+            var array = [];
+            $("#data-table > tbody").find("tr").each(function(index) {
+                orderObject = {
+                    "data_id": $(this).attr('data-id'),
+                    "data_order": $(this).attr('data-order')
+                }
+                array.push(orderObject);
+            })
+            $.post("{{ route('appSectionsSorting') }}", {
+                orderArray: array,
+                "_token": "{{ csrf_token() }}"
             });
-            return true;
-        } else {
-            return false;
+            $.notify("Section re-order successfully", "success");
         }
     })
-})
+    $(document).on('click', ".delete_section", function() {
+        var thiss = $(this);
+        var data_id = thiss.data('id');
+        swal({
+            title: "Are you sure!",
+            text: "It will permanently delete this section",
+            icon: "warning",
+            buttons: ["Cancel", "Yes"],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{route('appSectionsListing')}}" + '/delete/' + data_id,
+                    type: "DELETE",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        var result = response;
+                        if (result.status == 1) {
+                            window.location = "";
+                        } else {
+                            swal('Error', result.message, 'error');
+                        }
+                        return false;
+                    },
+                });
+                return true;
+            } else {
+                return false;
+            }
+        })
+    })
 </script>
 @endsection

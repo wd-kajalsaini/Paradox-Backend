@@ -7,20 +7,19 @@
            <!-- Start New Manager Type  --->
          <form action="{{route('editManagerType',$manager->id)}}" method="post">
          @csrf
-            <div class="content-heading">
+            <div class="content-heading px-4 d-block d-md-flex">
                 <div class="text-dark">{{__('System')}}/{{__('Managers')}}/{{__('Edit Manager Type')}}</div>
-               <div class="ml-auto">
+               <div class="ml-auto mt-3 mt-md-0">
                       <button class="btn btn-info btn-lg  " type="submit">{{__('Update')}}</button>
                        <button class="btn btn-info btn-lg " type="button" onclick="goBack()">{{__('Back')}}</button>
                </div>
             </div>
             <div class="p-3">
-                <div class="col-sm-4">
+                <div class="col-sm-12">
                       <div class="row">
-                          <div class="col-sm-12">
+                          <div class="col-sm-6 p-0">
                                <div class="form-group">
                                  <label class="col-form-label">{{__('Manager Type Name')}}</label>
-
                                  <input class="form-control"  name="name" type="text" style="border-right: 1px solid  red;" name="managertype" value="{{ $manager->name }}" required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -28,7 +27,7 @@
                               </div>
                           </div>
 
-                           <div class="col-sm-12 managerPermission">
+                           <div class="col-sm-12 managerPermission p-0 ">
                                <div class="form-group">
                                  <label class="col-form-label">{{__('Manager Type Permissions')}}</label>
                                    <div class="dd" id="nestable2">

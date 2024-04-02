@@ -211,7 +211,7 @@
                         </a>
                     </div><!-- END navbar header-->
                     <!-- START Left navbar-->
-                    <ul class="navbar-nav mr-auto flex-row">
+                    <ul class="navbar-nav mr-auto flex-row align-items-center">
                         <li class="nav-item">
                             <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
                             <a class="nav-link d-none d-md-block d-lg-block d-xl-block" href="#" data-trigger-resize="" data-toggle-state="aside-collapsed"><em class="fas fa-bars"></em></a><!-- Button to show/hide the sidebar on mobile. Visible on mobile only.--><a class="nav-link sidebar-toggle d-md-none" href="#" data-toggle-state="aside-toggled" data-no-persist="true"><em class="fas fa-bars"></em></a></li><!-- START User avatar toggle-->
@@ -227,7 +227,7 @@
                         </form>
                         <!-- START -->
                         <li class="nav-item d-none d-md-block">
-                            <div class="dropdown mt-3">
+                            <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle b-0" type="button" data-toggle="dropdown" style="border:1px solid white;background: transparent;">
                                     @if(Cookie::get('locale'.Auth::user()->id)=="hebrew")
                                     {{'עברית' }}
@@ -387,19 +387,19 @@
                     }
 
             })();
-                    @if (Session::has('message'))
-            (function () {
-                'use strict';
+            //         @if (Session::has('message'))
+            // (function () {
+            //     'use strict';
 
-                $(initCustom);
-                function initCustom() {
+            //     $(initCustom);
+            //     function initCustom() {
 
-                    // custom code
-                    $.notify("{{ session('message') }}", {"status": "{{ session('class') }}"});
-                }
+            //         // custom code
+            //         $.notify("{{ session('message') }}", {"status": "{{ session('class') }}"});
+            //     }
 
-            })();
-            @endif
+            // })();
+            // @endif
         </script>
 
         <script src="{{ asset('vendor/modernizr/modernizr.custom.js')}}"></script><!-- STORAGE API-->

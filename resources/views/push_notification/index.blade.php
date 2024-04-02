@@ -4,16 +4,16 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>{{__('Push Notifications')}}</div><!-- START Language list-->
             <!-- END Language list-->
             <div class="ml-auto">
-                <a href="{{ route('sendPushNotificationAdd')}}"><button class="btn btn-info btn-lg" type="button"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button></a>
+                <a href="{{ route('sendPushNotificationAdd')}}"><button class="btn btn-info" type="button"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button></a>
             </div>
         </div><!-- START cards box-->
 
         <div class="p-3">
-            <div class="p-0">
+            <div class="">
                 @if (Session::has('import_error'))
                 <div class="alert alert-warning alert-dismissible show" role="alert">
                     <?php print_r(Session::get('import_error')); ?>
@@ -26,12 +26,12 @@
 
                 <div class="row">
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 ">
                         <!-- Table Card Start-->
                         <div class="card pl-0 pr-0 border">
                             <div class=" ">
                                 <!-- Datatable Start-->
-                                <div class="table-responsive">
+                                <div class="table-responsive border-0">
                                     <table class="table table-striped table-hover my-4 w-100" id="datatable1">
                                         <thead>
                                             <tr>
@@ -81,39 +81,41 @@
 
 @section('script')
 <script>
-$(".resend_notification").on('click', function () {
-    var thiss = $(this);
-    var data_id = thiss.data('id');
-    swal({
-        title: "Are you sure!",
-        text: "You want to resend the same notification.",
-        icon: "warning",
-        buttons: ["Cancel", "Yes"],
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            $.ajax({
-                url: "{{route('pushNotificationListing')}}" + '/resend/' + data_id,
-                type: "POST",
-                data: {"_token": "{{ csrf_token() }}"},
-                success: function (response) {
-                    var result = response;
-                    if (result.status == 1) {
-                        window.location = "";
-                    } else {
-                        swal('Error', result.message, 'error');
+    $(".resend_notification").on('click', function() {
+        var thiss = $(this);
+        var data_id = thiss.data('id');
+        swal({
+            title: "Are you sure!",
+            text: "You want to resend the same notification.",
+            icon: "warning",
+            buttons: ["Cancel", "Yes"],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{route('pushNotificationListing')}}" + '/resend/' + data_id,
+                    type: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        var result = response;
+                        if (result.status == 1) {
+                            window.location = "";
+                        } else {
+                            swal('Error', result.message, 'error');
+                        }
+                        return false;
+                    },
+                    error: function() {
+                        swal('Error', "Something went wrong", 'error');
                     }
-                    return false;
-                },
-                error: function() {
-                    swal('Error', "Something went wrong", 'error');
-                }
-            });
-            return true;
-        } else {
-            return false;
-        }
+                });
+                return true;
+            } else {
+                return false;
+            }
+        })
     })
-})
 </script>
 @endsection

@@ -1,17 +1,17 @@
 @extends('layouts.header')
 @section('content')
 <!-- Main section-->
-<section  id="sectionManager"class="section-container">
+<section id="sectionManager" class="section-container">
 
     <!-- Page content-->
     <div class="content-wrapper">
         <!-- Start ManagerInfo Form --->
         <form action="{{route('editSection',$selectSection->id)}}" method="post">
             @csrf
-            <div class="content-heading">
+            <div class="content-heading px-4 d-block d-md-flex">
                 <div class="text-dark">{{__('System')}}/{{__('Section')}}/{{__('New Section')}}</div><!--- START Language list--->
 
-                <div class="ml-auto">
+                <div class="ml-auto mt-3 mt-md-0 ">
                     <button class="btn btn-info btn-lg " type="submit">{{__('Update')}}</button>
                     <button class="btn btn-info btn-lg " type="button" onclick="goBack()">{{__('Back')}}</button>
                 </div><!--- END Language list--->
@@ -19,13 +19,13 @@
 
             <div class="p-3">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                         <!-- START card-->
                         <div class="card border">
                             <div class="card-header">
                                 <h3 class="card-title">{{__('Section Settings')}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body p-2">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -67,7 +67,7 @@
                                     <div class="col-sm-12 noActions">
                                         <div class="form-group">
                                             <label class="col-form-label">{{__('Action')}}</label>
-                                            <select class="form-control  action" style="border-right: 1px solid  red;" name="route" >
+                                            <select class="form-control  action" style="border-right: 1px solid  red;" name="route">
                                                 <option value="">{{__('Choose')}}....</option>
 
                                                 @foreach($nActions as $action)
@@ -88,7 +88,7 @@
                                             <label class="col-form-label">{{__('Icon')}} </label>
 
 
-                                            <input type="text" id="someName" name="icon" value="{{$selectSection->icon}}" class="icon-picker required" >
+                                            <input type="text" id="someName" name="icon" value="{{$selectSection->icon}}" class="icon-picker required">
 
                                         </div>
                                     </div>
@@ -100,13 +100,13 @@
                     </div>
 
 
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                         <!-- START card-->
                         <div class="card border">
                             <div class="card-header">
                                 <h3 class="card-title">{{__('Section Names')}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body p-2">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -126,7 +126,8 @@
 </section>
 <?php
 
-function camelToTitle($camelStr) {
+function camelToTitle($camelStr)
+{
     $intermediate = preg_replace('/(?!^)([[:upper:]][[:lower:]]+)/', ' $0', $camelStr);
     $titleStr = preg_replace('/(?!^)([[:lower:]])([[:upper:]])/', '$1 $2', $intermediate);
     return str_replace(' Listing', '', str_replace(' Add', '', $titleStr));
@@ -134,19 +135,17 @@ function camelToTitle($camelStr) {
 ?>
 
 <script>
-    $(document).ready(function () {
-        $(".showAction").change(function () {
+    $(document).ready(function() {
+        $(".showAction").change(function() {
 
             var showAction = $(this).val();
-            if (showAction == 'no')
-            {
+            if (showAction == 'no') {
                 $('.yesActions').hide();
                 $('.yesActions').find('.action').prop('disabled', true);
                 $('.noActions').show();
                 $('.noActions').find('.action').prop('disabled', false);
             }
-            if (showAction == 'yes')
-            {
+            if (showAction == 'yes') {
                 $('.yesActions').show();
                 $('.yesActions').find('.action').prop('disabled', false);
                 $('.noActions').hide();
@@ -154,21 +153,18 @@ function camelToTitle($camelStr) {
             }
         });
         var showAction = $('.showAction').val();
-        if (showAction == 'no')
-        {
+        if (showAction == 'no') {
             $('.yesActions').hide();
             $('.yesActions').find('.action').prop('disabled', true);
             $('.noActions').show();
             $('.noActions').find('.action').prop('disabled', false);
         }
-        if (showAction == 'yes')
-        {
+        if (showAction == 'yes') {
             $('.yesActions').show();
             $('.yesActions').find('.action').prop('disabled', false);
             $('.noActions').hide();
             $('.noActions').find('.action').prop('disabled', true);
         }
     });
-
 </script>
 @endsection

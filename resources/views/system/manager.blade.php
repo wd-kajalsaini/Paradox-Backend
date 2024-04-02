@@ -5,7 +5,7 @@
       <section  id="sectionManager"class="section-container">
          <!-- Page content-->
          <div class="content-wrapper">
-            <div class="content-heading">
+            <div class="content-heading px-4">
                <div>{{__('System')}}/{{__('Managers')}}</div><!-- START Language list-->
                <!--div class="ml-auto">
                   <div class="btn-group"><button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>
@@ -32,8 +32,7 @@
                      <div class="tab-content p-0 bg-white">
                         <div class="tab-pane active" id="home" role="tabpanel">
                               <div class="row p-4"> 
-                                 <div class="col-sm-10 "></div>
-                                 <div class="col-sm-2 text-right ">
+                                 <div class="col-12 text-right ">
                                        <a href="{{route('addManagerAdd')}}"><button class="btn btn-primary btn-lg theme-btn " type="button">{{__('New')}}</button></a>
                                  </div>
                                  <div class="col-sm-12">
@@ -44,10 +43,10 @@
                                  </div>
                                  @endif  
                                  </div>
-                                 <div class="col-sm-12">
+                                 <div class="col-sm-12 p-1">
                                       <!-- Table Card Start-->
                                     <div class="card pl-0 pr-0 border">                                      
-                                       <div class="">
+                                       <div class="table-responsive table_mob">
                                           <!-- Datatable Start-->
                                           <table class="table table-striped my-4 w-100" id="datatable1">
                                              <thead>

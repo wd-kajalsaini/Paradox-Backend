@@ -5,7 +5,7 @@
 <section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>Country Extensions</div><!-- START Language list-->
             <div class="ml-auto">
                 <a href="{{route('exportExtension')}}"><button class="btn btn-purple btn-lg" type="button">Export Sample</button></a>
@@ -28,7 +28,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @endif 
+                @endif
 
 
                 <div class="row">
@@ -78,7 +78,7 @@
 </section>
 
 <script>
-    $(".delete_extension").on('click', function () {
+    $(".delete_extension").on('click', function() {
         var thiss = $(this);
         var data_id = thiss.data('id');
         swal({
@@ -92,8 +92,10 @@
                 $.ajax({
                     url: "{{route('extensionManagementListing')}}" + '/delete/' + data_id,
                     type: "DELETE",
-                    data: {"_token": "{{ csrf_token() }}"},
-                    success: function (response) {
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
                         var result = response;
                         if (result.status == 1) {
                             window.location = "";
@@ -109,10 +111,10 @@
             }
         })
     })
-    $(document).on('click', '.import_button', function () {
+    $(document).on('click', '.import_button', function() {
         $('.import_file').trigger('click');
     })
-    $(document).on('change', '.import_file', function () {
+    $(document).on('change', '.import_file', function() {
         $('#import_form').submit();
     })
 </script>

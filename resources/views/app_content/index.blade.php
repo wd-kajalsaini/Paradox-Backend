@@ -3,7 +3,7 @@
 <section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4 ">
             <div>{{ __('App Content Management') }}</div>
             <!-- START Language list-->
             <!--div class="ml-auto">
@@ -34,16 +34,16 @@
                 <!-- Screen Text Tab Start-->
                 <div class="tab-pane active" id="cont_manag" role="tabpanel">
                     <div class="row p-4">
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <div class="row">
-                                <div class="col-sm-12 managerPermission">
+                                <div class="col-sm-12 managerPermission p-0 p-md-3">
                                     <div class="form-group">
                                         <div class="dd" id="nestable2">
                                             <ol class="dd-list">
                                                 @foreach($app_contents as $app_content)
                                                 <li class="dd-item dd3-item ">
                                                     <div class="dd3-content">{{ __($app_content->name) }}
-                                                        <div class="form-group float-right">
+                                                        <div class="form-group float-right m-0">
                                                             <button class="btn btn-info p-0 btn_p editScreenText" data-id="{{ $app_content->id }}"><i class="fa fa-edit"></i>
                                                             </button>
                                                         </div>
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <!--- Edit  Row Start--->
-                        <div class="col-8 pl-4 " id="editScreenData">
+                        <div class="col-12 p-0" id="editScreenData">
 
                         </div>
                         <!--- Edit  Row End--->
@@ -72,30 +72,35 @@
 </section>
 
 <script>
-    $('.editScreenText').on('click', function () {
+    $('.editScreenText').on('click', function() {
         var content_id = $(this).data('id');
         var csrf_token = $('meta[name="csrf-token"]').attr('content'); // Retrieve CSRF token
 
         $.ajax({
             url: "{{route('appContentFieldAjax')}}",
             type: "POST",
-            data: {app_content_id: content_id, _token: csrf_token },
+            data: {
+                app_content_id: content_id,
+                _token: csrf_token
+            },
 
-            success: function (response) {
+            success: function(response) {
                 $('#editScreenData').html(response);
                 $('#editScreenData').show();
             }
         })
     });
 
-    $(document).on('submit', '#content_field_form', function (e) {
+    $(document).on('submit', '#content_field_form', function(e) {
         var empty_field = 0;
-        $(document).find('.required_field').each(function (index, element) {
+        $(document).find('.required_field').each(function(index, element) {
             var thiss = $(this);
             if (thiss.val() == "") {
                 e.preventDefault();
                 thiss.trigger('click');
-                $.notify("Please fill all field.", {"status": "danger"});
+                $.notify("Please fill all field.", {
+                    "status": "danger"
+                });
                 return false;
             }
         })

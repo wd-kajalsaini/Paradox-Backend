@@ -38,7 +38,7 @@
 <section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div>{{ __('User Info') }}</div>
             <!-- START Language list-->
             <!--div class="ml-auto">
@@ -112,10 +112,10 @@
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Avatar')}}</label>
                                                     <div class="row">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6">
                                                             <input type='file' id="imgInp" name="avatar" />
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-lg-6">
                                                             <b>Preview:</b>
                                                             <div class="preview_thumb mt-2"><img id="blah" src="{{ asset('img/avatarEmpty.png') }}" alt="Show banner" />
                                                                 <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
@@ -124,14 +124,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 text-right">
-                                                <button class="btn btn-info btn-lg" type="submit" >Add</button>
+                                            <div class="col-12 text-center">
+                                                <button class="btn btn-info" type="submit" >Add</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <!-- Table Card End-->
+                            <!-- Table Card End dvdvs   -->
                         </div>
                     </div>
                 </div>
