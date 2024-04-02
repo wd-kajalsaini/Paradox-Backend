@@ -38,8 +38,8 @@
                         <div class="">
                             <div class="">
                                 <!-- Datatable Start-->
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                                <div class="">
+                                    <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
                                         <thead>
                                             <tr>
                                                 <th data-priority="1">{{__('Id')}}</th>

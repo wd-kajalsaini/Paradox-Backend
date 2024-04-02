@@ -17,9 +17,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive table_mob">
+                    <div class="">
                         <!-- Datatable Start-->
-                        <table class="table table-striped my-4 w-100" id="data-table">
+                        <table class="table table-striped table-responsive table_mob my-4 w-100" id="data-table">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -44,7 +44,7 @@
                                 @endforeach
                                 @else
                                 <tr class="gradeX">
-                                    <td colspan="4" class="text-center">No record found</td>
+                                    <td colspan="8" class="text-center">No record found</td>
                                 </tr>
                                 @endif
                             </tbody>
@@ -69,7 +69,7 @@
                                 <form id="" action="{{ route('bannerShowsListing') }}" method="POST">
                                     @csrf
                                     <div class="form-group row mb-3">
-                                        <label for="inputEmail3" class="col-12 col-form-label "><span class="text-danger">*</span>Shows:</label>
+                                        <label for="inputEmail3" class="col-12 col-form-label "><span class="text-danger">*</span>Shows</label>
                                         <div class="col-12">
                                             <select multiple id="showselection" name="shows[]" class="form-control ctSelectBox1" required="">
                                                 @foreach($overall_shows as $show)

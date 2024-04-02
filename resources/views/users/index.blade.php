@@ -15,75 +15,75 @@
         </div><!-- START cards box-->
 
 
-            <!-- Table Card Start-->
-            <div class="card m-3 border">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-4">
-                            <h4 class="mt-0">All Users</h4>
-                        </div>
-                        <div class="col-8 text-right">
-                            <a href="{{ route('addUser') }}">
-                                <button class="btn btn-info" type="button">Create New User</button>
-                            </a>
-                        </div>
+        <!-- Table Card Start-->
+        <div class="card m-3 border">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <h4 class="mt-0">All Users</h4>
                     </div>
-
+                    <div class="col-8 text-right">
+                        <a href="{{ route('addUser') }}">
+                            <button class="btn btn-info" type="button">Create New User</button>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="row ">
-
-                    <div class="col-sm-12">
-                        <div class="table-responsive table_mob">
-                            <!-- Datatable Start-->
-                            <table class="table table-striped table-hover my-4 w-100" id="datatable1">
-                                <thead>
-                                    <tr>
-                                        <th data-priority="1">{{__('Id')}}</th>
-                                        <th>{{__('Name')}}</th>
-                                        <th>{{__('Phone Number')}}</th>
-                                        <th>{{__('Email')}}</th>
-                                        <th>{{__('Avatar')}}</th>
-                                        <th>{{__('Gender')}}</th>
-                                        <th>{{__('Device Type')}}</th>
-                                        <th>{{__('App version')}}</th>
-                                        <th>{{__('Status')}}</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($userListing as $userList)
-                                    <tr>
-                                        <td>{{ $userList->id }}</td>
-                                        <td>{{ $userList->name }}</td>
-                                        <td>{{ $userList->phone_number }}</td>
-                                        <td>{{ $userList->email }}</td>
-                                        <td><img src="{{ !empty($userList->image) && @getimagesize($userList->image)?$userList->image:asset('img/avatarEmpty.png')}}" width="80" height="80" class="img-thumbnail rounded-circle"></td>
-                                        <td>{{ $userList->gender }}</td>
-                                        <td>{{ $userList->device_type }}</td>
-                                        <td>{{ $userList->app_version }}</td>
-                                        <td class="active_status">{{ $userList->status }}</td>
-                                        <td class="text-right d-flex">
-                                            <button class="btn btn-danger delete_user" type="button" title="Delete" data-id="{{$userList->id}}"><i class="fa fa-trash"></i></button>
-                                            <a href="{{route('editUserInfo',$userList->id)}}"><button class="btn btn-info" type="button"><i class="fa fa-edit"></i></button></a>
-                                            <button type="button" class="btn btn-success waves-effect waves-light active_block" data-id="{{ $userList->id }}" data-status="Active" style="{{ ($userList->status == 'Active') ? "display:none" : "" }}" title="Make user active">
-                                                <i class="fas fa-user-check"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger waves-effect waves-light active_block" data-id="{{ $userList->id }}" data-status="Block" style="{{ ($userList->status == 'Active') ? "" : "display:none" }}" title="Make user block">
-                                                <i class="fas fa-user-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- Datatable Start-->
-                        </div>
-                    </div>
-                    <!-- Table Card End-->
-                </div>
             </div>
-       
+
+            <div class="row ">
+
+                <div class="col-sm-12">
+                    <div class="">
+                        <!-- Datatable Start-->
+                        <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
+                            <thead>
+                                <tr>
+                                    <th data-priority="1">{{__('Id')}}</th>
+                                    <th>{{__('Name')}}</th>
+                                    <th>{{__('Phone Number')}}</th>
+                                    <th>{{__('Email')}}</th>
+                                    <th>{{__('Avatar')}}</th>
+                                    <th>{{__('Gender')}}</th>
+                                    <th>{{__('Device Type')}}</th>
+                                    <th>{{__('App version')}}</th>
+                                    <th>{{__('Status')}}</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($userListing as $userList)
+                                <tr>
+                                    <td>{{ $userList->id }}</td>
+                                    <td>{{ $userList->name }}</td>
+                                    <td>{{ $userList->phone_number }}</td>
+                                    <td>{{ $userList->email }}</td>
+                                    <td><img src="{{ !empty($userList->image) && @getimagesize($userList->image)?$userList->image:asset('img/avatarEmpty.png')}}" width="80" height="80" class="img-thumbnail rounded-circle"></td>
+                                    <td>{{ $userList->gender }}</td>
+                                    <td>{{ $userList->device_type }}</td>
+                                    <td>{{ $userList->app_version }}</td>
+                                    <td class="active_status">{{ $userList->status }}</td>
+                                    <td class="text-right d-flex justify-content-around">
+                                        <button class="btn btn-danger delete_user" type="button" title="Delete" data-id="{{$userList->id}}"><i class="fa fa-trash"></i></button>
+                                        <a href="{{route('editUserInfo',$userList->id)}}"><button class="btn btn-info" type="button"><i class="fa fa-edit"></i></button></a>
+                                        <button type="button" class="btn btn-success waves-effect waves-light active_block" data-id="{{ $userList->id }}" data-status="Active" style="{{ ($userList->status == 'Active') ? "display:none" : "" }}" title="Make user active">
+                                            <i class="fas fa-user-check"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger waves-effect waves-light active_block" data-id="{{ $userList->id }}" data-status="Block" style="{{ ($userList->status == 'Active') ? "" : "display:none" }}" title="Make user block">
+                                            <i class="fas fa-user-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <!-- Datatable Start-->
+                    </div>
+                </div>
+                <!-- Table Card End-->
+            </div>
+        </div>
+
 
     </div>
 </section>

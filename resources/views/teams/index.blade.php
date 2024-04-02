@@ -21,9 +21,9 @@
                     </div>
                 </div>
             </div>
-            <div class="table-responsive table_mob">
+            <div class="">
                 <!-- Datatable Start-->
-                <table class="table table-striped my-4 w-100" id="datatable1">
+                <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
                     <thead>
                         <tr>
                             <th>Title</th>
@@ -60,36 +60,38 @@
 
 @section('script')
 <script>
-$(document).on('click', ".delete_team", function () {
-    var thiss = $(this);
-    var data_id = thiss.data('id');
-    swal({
-        title: "Are you sure!",
-        text: "It will permanently delete this team",
-        icon: "warning",
-        buttons: ["Cancel", "Yes"],
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            $.ajax({
-                url: "{{ route('teamsListing') }}" + '/delete/' + data_id,
-                type: "DELETE",
-                data: {"_token": "{{ csrf_token() }}"},
-                success: function (response) {
-                    var result = response;
-                    if (result.status == 1) {
-                        window.location = "";
-                    } else {
-                        swal('Error', result.message, 'error');
-                    }
-                    return false;
-                },
-            });
-            return true;
-        } else {
-            return false;
-        }
+    $(document).on('click', ".delete_team", function() {
+        var thiss = $(this);
+        var data_id = thiss.data('id');
+        swal({
+            title: "Are you sure!",
+            text: "It will permanently delete this team",
+            icon: "warning",
+            buttons: ["Cancel", "Yes"],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{ route('teamsListing') }}" + '/delete/' + data_id,
+                    type: "DELETE",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        var result = response;
+                        if (result.status == 1) {
+                            window.location = "";
+                        } else {
+                            swal('Error', result.message, 'error');
+                        }
+                        return false;
+                    },
+                });
+                return true;
+            } else {
+                return false;
+            }
+        })
     })
-})
 </script>
 @endsection
