@@ -3,17 +3,17 @@
 
 <!---Side Bar End-->
 <!-- Main section-->
-<section  id="sectionManager"class="section-container">
+<section id="sectionManager" class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
         <!-- Start ManagerInfo Form --->
         <form action="{{route('editManager',$manager->id)}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="content-heading">
+            <div class="content-heading px-4 d-block d-md-flex">
                 <div class="text-dark">{{__('System')}}/{{__('Managers')}}/{{__('Edit')}}</div><!-- START Language list-->
-                <div class="ml-auto">
-                    <button class="btn btn-info btn-lg  " type="submit">{{__('Update')}}</button>
-                    <button class="btn btn-info btn-lg " type="button" onclick="goBack()">{{__('Back')}}</button>
+                <div class="ml-auto mt-3 mt-md-0">
+                    <button class="btn btn-info" type="submit">{{__('Update')}}</button>
+                    <button class="btn btn-info" type="button" onclick="goBack()">{{__('Back')}}</button>
                 </div><!-- END Language list-->
             </div><!-- START cards box-->
 
@@ -30,13 +30,13 @@
                 <div class="tab-content p-0 bg-white">
                     <div class="tab-pane active" id="home" role="tabpanel">
                         <div class="row p-4">
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <!-- START card-->
                                 <div class="card p-4 b-01">
                                     <div class="card-header">
                                         <h3 class="card-title">{{__('Login Info')}}</h3>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body p-0 -md-2">
                                         <div class="row">
                                             @if($manager->role!=="Admin")
                                             <div class="col-sm-6">
@@ -46,7 +46,7 @@
                                                     <select class="form-control  @error('manager_type') is-invalid @enderror" style="border-right: 1px solid  red;" name="manager_type" required>
                                                         <option value="">{{__('Choose')}}....</option>
                                                         @foreach($managersTypes as $managersType)
-                                                        <option value="{{$managersType->id}}" {{ $manager->managerType->id == $managersType->id ?"selected":""  }} >{{$managersType->name}}</option>
+                                                        <option value="{{$managersType->id}}" {{ $manager->managerType->id == $managersType->id ?"selected":""  }}>{{$managersType->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if ($errors->has('manager_type'))
@@ -55,7 +55,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <label class="col-form-label" >{{__('Status')}}</label>
+                                                <label class="col-form-label">{{__('Status')}}</label>
                                                 <select style="border-right: 1px solid  red;" class="form-control  @error('status') is-invalid @enderror" name="status" required>
                                                     <option value="">{{__('Choose')}}....</option>
                                                     <option value="Active" {{ $manager->status == "Active"?"selected":""  }}>{{__('Active')}}</option>
@@ -69,7 +69,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Password')}}</label>
-                                                    <input class="form-control" name="password" value="{{old('password')}}" type="password"  >
+                                                    <input class="form-control" name="password" value="{{old('password')}}" type="password">
                                                     @if ($errors->has('password'))
                                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                                     @endif
@@ -78,13 +78,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Confirm Password')}}</label>
-                                                    <input class="form-control" name="confirm_password" value="{{old('confirm_password')}}" type="password"  >
+                                                    <input class="form-control" name="confirm_password" value="{{old('confirm_password')}}" type="password">
                                                     @if ($errors->has('confirm_password'))
                                                     <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12" style="    margin-top: -35px;">
+                                            <div class="col-sm-12">
                                                 <span class=" text-muted">{{__('Password format')}}</span>
                                             </div>
                                         </div>
@@ -93,18 +93,18 @@
                             </div>
 
 
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <!-- START card-->
                                 <div class="card p-4 b-01">
                                     <div class="card-header">
                                         <h3 class="card-title">{{__('User Info')}}</h3>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body p-0 p-md-2">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('First Name')}}</label>
-                                                    <input class="form-control  @error('first_name') is-invalid @enderror" style="border-right: 1px solid  red;" name="first_name" type="text"  value="{{$manager->first_name}}" required>
+                                                    <input class="form-control  @error('first_name') is-invalid @enderror" style="border-right: 1px solid  red;" name="first_name" type="text" value="{{$manager->first_name}}" required>
                                                     @if ($errors->has('first_name'))
                                                     <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                                     @endif
@@ -122,7 +122,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Phone Number')}}</label>
-                                                    <input class="form-control  @error('phone') is-invalid @enderror" style="border-right: 1px solid  red;" name="phone" type="phone" value="{{$manager->phone}}"  required>
+                                                    <input class="form-control  @error('phone') is-invalid @enderror" style="border-right: 1px solid  red;" name="phone" type="phone" value="{{$manager->phone}}" required>
                                                     @if ($errors->has('phone'))
                                                     <span class="text-danger">{{ $errors->first('phone') }}</span>
                                                     @endif

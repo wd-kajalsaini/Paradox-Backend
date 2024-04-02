@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Main section-->
-<section  class="section-container">
+<section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
         <div class="content-heading px-4">
@@ -20,9 +20,9 @@
                 <div class="col-sm-12">
                     <!-- Table Card Start-->
                     <div class="card pl-0 pr-0 border">
-                        <div class="table-responsive">
+                        <div class="">
                             <!-- Datatable Start-->
-                            <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                            <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
                                 <thead>
                                     <tr>
                                         <th data-priority="1">{{__('Id')}}</th>
@@ -63,7 +63,7 @@
 
 @section('script')
 <script>
-    $(document).on('click', ".delete_group", function () {
+    $(document).on('click', ".delete_group", function() {
         var thiss = $(this);
         var data_id = thiss.data('id');
         swal({
@@ -77,8 +77,10 @@
                 $.ajax({
                     url: "{{route('groupsListing')}}" + '/delete/' + data_id,
                     type: "DELETE",
-                    data: {"_token": "{{ csrf_token() }}"},
-                    success: function (response) {
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
                         var result = response;
                         if (result.status == 1) {
                             window.location = "";

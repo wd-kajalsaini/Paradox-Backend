@@ -7,7 +7,11 @@
         <div class="content-heading px-4">
             <div>App Sections</div>
             <!-- START Language list-->
+            <div class="ml-auto mt-3 mt-md-0">
+                <button class="btn btn-info" type="button" onclick="goBack()">Back</button>
+            </div>
         </div>
+
         <div class="card m-3 border">
             <div class="card-header">
                 <div class="row align-items-center">
@@ -21,9 +25,9 @@
                     </div>
                 </div>
             </div>
-            <div class="table-responsive table_mob">
+            <div class="">
                 <!-- Datatable Start-->
-                <table class="table table-striped my-4 w-100" id="data-table">
+                <table class="table table-striped table-responsive table_mob my-4 w-100" id="data-table">
                     <thead>
                         <tr>
                             <th></th>

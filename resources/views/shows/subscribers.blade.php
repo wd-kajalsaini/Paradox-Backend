@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Main section-->
-<section  class="section-container">
+<section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
         <div class="content-heading">
@@ -15,22 +15,22 @@
         </div><!-- START cards box-->
 
         <div class="p-3">
-                    <!-- Table Card Start-->
-                    <div class="card pl-0 pr-0 border">
-                        <div class="card-header">
-                            <div class="col-sm-10 ">
-                                <h4 class="mt-3">Subscribe Users</h4>
-                            </div>
-                            <div class="col-sm-2 text-right">
-                                <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button" data-toggle="modal" data-target="#notificationModal">Send Notification</button>
-                            </div>
-                        </div>
-                        <div class="row ">
+            <!-- Table Card Start-->
+            <div class="card pl-0 pr-0 border">
+                <div class="card-header">
+                    <div class="col-sm-10 ">
+                        <h4 class="mt-3">Subscribe Users</h4>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button" data-toggle="modal" data-target="#notificationModal">Send Notification</button>
+                    </div>
+                </div>
+                <div class="row ">
 
-                            <div class="col-sm-12">
-                        <div class="table-responsive">
+                    <div class="col-sm-12">
+                        <div class="">
                             <!-- Datatable Start-->
-                            <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                            <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
                                 <thead>
                                     <tr>
                                         <th data-priority="1">{{__('Id')}}</th>
@@ -103,7 +103,7 @@
 
 @section('script')
 <script>
-    $(document).on('click', ".delete_user", function () {
+    $(document).on('click', ".delete_user", function() {
         var thiss = $(this);
         var data_id = thiss.data('id');
         swal({
@@ -117,8 +117,10 @@
                 $.ajax({
                     url: "{{route('applicationUsersListing')}}" + '/delete/' + data_id,
                     type: "DELETE",
-                    data: {"_token": "{{ csrf_token() }}"},
-                    success: function (response) {
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
                         var result = response;
                         if (result.status == 1) {
                             window.location = "";
@@ -135,7 +137,7 @@
         })
     })
 
-    $('.active_block').click(function () {
+    $('.active_block').click(function() {
         var thiss = $(this);
         var data_id = $(this).attr('data-id');
         var data_status = $(this).attr('data-status');
@@ -150,13 +152,16 @@
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        }).then(function (willYes) {
+        }).then(function(willYes) {
             if (willYes) {
                 $.ajax({
-                    url: "{{route('applicationUsersListing')}}/active_block/"+data_id,
+                    url: "{{route('applicationUsersListing')}}/active_block/" + data_id,
                     method: "POST",
-                    data: {'status': data_status, "_token": "{{ csrf_token() }}"},
-                    success: function (result) {
+                    data: {
+                        'status': data_status,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(result) {
                         if (result.status == 1) {
                             $(".active_block[data-id='" + data_id + "']").hide();
                             $(".active_block[data-id='" + data_id + "']").not("[data-status='" + data_status + "']").show();
@@ -171,13 +176,13 @@
         })
     })
 
-    $("#notification_form").on('submit',function(e){
+    $("#notification_form").on('submit', function(e) {
         e.preventDefault();
         var formEl = $(this);
         var submitButton = $('button[type=submit]', formEl);
         $.ajax({
             type: 'POST',
-            url: "{{route('showsListing')}}/subscriber_notification/"+"{{$id}}",
+            url: "{{route('showsListing')}}/subscriber_notification/" + "{{$id}}",
             data: formEl.serialize(),
             beforeSend: function() {
                 submitButton.prop('disabled', 'disabled');

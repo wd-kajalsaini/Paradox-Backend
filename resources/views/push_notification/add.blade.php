@@ -21,7 +21,7 @@
                         <div class="card pl-0 pr-0 border">
                             <div class="card-body">
                                 <!-- p.lead.text-centerNo mails here-->
-                                <div class="row p-4">
+                                <div class="row">
                                     <div class="col-sm-12">
                                         <h4 class="">{{ __('Send New Notification')}}</h4>
                                     </div>

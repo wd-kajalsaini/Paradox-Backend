@@ -77,11 +77,11 @@
                             </div>
                             <div class="col-8 col-md-10">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-lg-6">
                                         <input type='file' id="imgInp" name="thumbnail" />
                                     </div>
-                                    <div class="col-sm-6">
-                                        <b>Preview:</b>
+                                    <div class="col-lg-6">
+                                        <b>Preview</b>
                                         <div class="preview_thumb mt-2"><img id="blah" src="{{ asset('img/avatarEmpty.png') }}" alt="Team Logo" />
                                             <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                         </div>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <button class="btn theme-blue-btn" type="submit">Submit </button>
+                                <button class="btn btn-info" type="submit">Submit </button>
                             </div>
                         </div>
                     </div>

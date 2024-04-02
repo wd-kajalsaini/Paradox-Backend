@@ -84,7 +84,7 @@
                                         <input type='file' id="imgInp" name="thumbnail" />
                                     </div>
                                     <div class="col-lg-6">
-                                        <b>Preview:</b>
+                                        <b>Preview</b>
                                         <div class="preview_thumb mt-2"><img id="blah" src="{{ !empty($team['logo']) ? $team['logo']: asset('img/avatarEmpty.png') }}" alt="Team Logo" />
                                             <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                         </div>

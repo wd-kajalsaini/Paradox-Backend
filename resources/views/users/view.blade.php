@@ -131,12 +131,12 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-form-label">{{__('Avatar')}}</label>
-                                                    <div class="row">
+                                                    <div class="row align-items-center">
                                                         <div class="col-md-6">
                                                             <input type='file' id="imgInp" name="avatar" />
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <b>Preview:</b>
+                                                            <b>Preview</b>
                                                             <div class="preview_thumb mt-2"><img id="blah" src="{{ !empty($userDetail->image) && @getimagesize($userDetail->image)?$userDetail->image:asset('img/avatarEmpty.png')}}" alt="Show banner" />
                                                                 <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                                             </div>
