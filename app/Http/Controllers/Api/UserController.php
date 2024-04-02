@@ -182,7 +182,7 @@ class UserController extends Controller {
         $userdetail->fill($fillableData);
         $userdetail->save();
         $userdetail = User::find($user->id);
-        $userdetail->token = $userdetail->createToken('paradox_app')->accessToken;
+        $userdetail->token = $userdetail->createToken('paradoxa')->accessToken;
         return response()->json(['status' => 1, 'message' => 'Login successful', 'data' => $userdetail]);
     }
 
@@ -254,7 +254,7 @@ class UserController extends Controller {
         $user_check->fill($data);
         $user_check->save();
         $userdetail = User::find($user_check->id);
-        $userdetail->token = $user_check->createToken('paradox_app')->accessToken;
+        $userdetail->token = $user_check->createToken('paradoxa')->accessToken;
         return response()->json(['status' => 1, 'message' => 'Login successfull', 'data' => $userdetail]);
     }
 
