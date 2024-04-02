@@ -23,6 +23,12 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->integer('is_verified')->default(0);
             $table->integer('is_online')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->date('install_date')->nullable();
+            $table->string('device_type')->nullable();
+            $table->string('app_version')->nullable();
+            $table->string('notification_token')->nullable();
+            $table->string('email_verification_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

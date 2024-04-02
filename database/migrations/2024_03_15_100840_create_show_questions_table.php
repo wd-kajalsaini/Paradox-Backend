@@ -18,8 +18,6 @@ class CreateShowQuestionsTable extends Migration
             $table->string('title')->nullable();
             $table->integer('duration')->nullable();
             $table->integer('show_id');
-            $table->integer('team_1_id');
-            $table->integer('team_2_id');
             $table->timestamps();
         });
     }
