@@ -73,6 +73,7 @@ class Managers extends Authenticatable
 
     function validate_api_token() {
         $jwt = "";
+        // dd($_SERVER);
         if (isset($_SERVER['HTTP_AUTHORIZATION']) && !empty($_SERVER['HTTP_AUTHORIZATION'])) {
             $token = explode(' ', $_SERVER['HTTP_AUTHORIZATION']);
             $jwt = $token[1];
@@ -84,10 +85,12 @@ class Managers extends Authenticatable
         $key = $this->secret_token_key;
         try {
             $decoded = JWT::decode($jwt, $key, array('HS256'));
+            dd($decoded);
             if (isset($decoded->user_id)) {
                 return $decoded->user_id;
             }
         } catch (Exception $e) {
+            // dd($e);
             echo json_encode(array('status' => 0, 'message' => $e->getMessage()));
             die;
         }

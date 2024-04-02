@@ -64,7 +64,7 @@
                                 <div class="input-group">
                                     <input class="form-control" type="number" name="duration" required="" min="1">
                                     <div class="input-group-append">
-                                        <span class="input-group-text">second</span>
+                                        <span class="input-group-text">seconds</span>
                                     </div>
                                 </div>
                                 <div class="invalid-feedback">Please enter a Duration</div>
