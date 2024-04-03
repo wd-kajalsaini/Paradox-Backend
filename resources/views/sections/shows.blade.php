@@ -10,15 +10,19 @@
         </div>
         <div class="card m-3 border">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-10 ">
-                        <h4 class="mt-3">Shows List</h4>
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <h4 class="m-0">Shows List</h4>
+                    </div>
+                    <div class="col-4 text-right">
+                        <button class="btn btn-info" type="button" onclick="goBack()">Back</button>
+
                     </div>
                 </div>
             </div>
             <div class="">
                 <!-- Datatable Start-->
-                <table class="table table-striped my-4 w-100" id="data-table">
+                <table class="table  table-striped table_mob my-4 w-100 table-responsive" id="data-table">
                     <thead>
                         <tr>
                             <th></th>
@@ -62,20 +66,23 @@
 
 @section('script')
 <script>
-$('.sortable').sortable({
-    update: function() {
+    $('.sortable').sortable({
+        update: function() {
 
-        var array  = [];
-        $("#data-table > tbody").find("tr").each(function(index){
-            orderObject = {
-                "data_id" : $(this).attr('data-id'),
-                "data_order" : $(this).attr('data-order')
-            }
-            array.push(orderObject);
-        })
-        $.post("{{ route('sectionShowSorting') }}",{ orderArray: array, "_token": "{{ csrf_token() }}"});
-        $.notify("Shows re-order successfully", "success");
-    }
-})
+            var array = [];
+            $("#data-table > tbody").find("tr").each(function(index) {
+                orderObject = {
+                    "data_id": $(this).attr('data-id'),
+                    "data_order": $(this).attr('data-order')
+                }
+                array.push(orderObject);
+            })
+            $.post("{{ route('sectionShowSorting') }}", {
+                orderArray: array,
+                "_token": "{{ csrf_token() }}"
+            });
+            $.notify("Shows re-order successfully", "success");
+        }
+    })
 </script>
 @endsection

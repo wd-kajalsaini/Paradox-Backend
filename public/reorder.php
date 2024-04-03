@@ -11,14 +11,14 @@
       <section  id="sectionManager"class="section-container">
          <!-- Page content-->
          <div class="content-wrapper">
-            <div class="content-heading">
+            <div class="content-heading px-4">
                <div>System/System Section/Reoder</div>
               <div class="ml-auto">
                         <button class="btn btn-primary btn-lg theme-btn" type="button" onclick="goBack()">Back</button>
                </div><!--- END Language list--->
             </div><!-- START cards box-->
 
-               <div class="card card-transparent" role="tabpanel">
+               <div class="card card-transparent p-2" role="tabpanel">
                   
             <div class="container-fluid">
                <div class="js-nestable-action"> 

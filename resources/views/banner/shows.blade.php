@@ -12,8 +12,12 @@
                 <div class="card border m-3">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-sm-10 ">
+                            <div class="col-8">
                                 <h4 class="">Shows List</h4>
+                            </div>
+                            <div class="col-4 text-right">
+                                <button class="btn btn-info" type="button" onclick="goBack()">Back</button>
+
                             </div>
                         </div>
                     </div>
