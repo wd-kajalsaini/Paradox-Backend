@@ -31,7 +31,7 @@ class CreateShowsTable extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('live_at')->nullable();
             $table->timestamp('stop_at')->nullable();
-            $table->integer('chat_room_id')->nullable();
+            $table->string('chat_room_id')->nullable();
              $table->timestamps();
         });
     }
