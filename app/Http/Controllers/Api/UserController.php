@@ -249,6 +249,9 @@ class UserController extends Controller {
         if (!empty($input['app_version'])) {
             $data['app_version'] = $input['app_version'];
         }
+        if (!empty($input['gender'])) {
+            $data['gender'] = $input['gender'];
+        }
         $data['is_verified'] = 1;
         if (empty($user_check)) {
             $user_check = new User;
