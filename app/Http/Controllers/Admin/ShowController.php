@@ -463,7 +463,8 @@ class ShowController extends Controller {
         return substr(str_shuffle($str_result), 0, $length_of_string);
     }
 
-   /* function create_room($token, $data){
+   /* function create_room($token, $data)
+    {
 
         // Build post body
         $post_body = json_encode($data);
@@ -489,14 +490,14 @@ class ShowController extends Controller {
         } else {
             $error = curl_error($curl). '(' .curl_errno($curl). ')';
             return response()->json(
-                
+
             );
         }
         // Close connection
         curl_close($curl);
     }*/
-    function create_room($data){
-
+    function create_room($data)
+    {
         // Build post body
         $post_body = json_encode($data);
 
