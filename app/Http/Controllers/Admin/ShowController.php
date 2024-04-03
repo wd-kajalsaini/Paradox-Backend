@@ -307,10 +307,10 @@ class ShowController extends Controller {
 
     public function make_show_live($id) {
         $user = Auth::user();
-
         if(empty($user->quickblox_login)){
             $adminDetail = Managers::find(1);
-            $admin_session = $this->create_session(['login' => $adminDetail->quickblox_login,'password' => base64_decode($adminDetail->quickblox_password)]);
+            $admin_session = $this->create_session(['login' => $adminDetail->quickblox_login,'password' => ($adminDetail->quickblox_password)]);
+            dd($admin_session);
             $password = $this->random_strings(8);
             // $password = 'Admin@123';
             $createUser = $this->create_user($admin_session->session->token,['email' => $user->email,'login' => $user->email,'password' => $password,'full_name' => $user->first_name.' '.$user->last_name]);
@@ -332,10 +332,9 @@ class ShowController extends Controller {
         $nonce = rand();
         $timestamp = time();
         $signature_string = "application_id=" . QB_APPLICATION_ID . "&auth_key=" . QB_AUTH_KEY . "&nonce=" . $nonce . "&timestamp=" . $timestamp . "&user[login]=" . $data['login'] . "&user[password]=" . $data['password'];
+        // echo "<pre>";
+        // print_r(hash_hmac('sha1', "application_id=102994&auth_key=ak_nAHpcXum6AEpwMw&nonce=723027416&timestamp=1712133208&user[login]=developer@worksdelight.org&user[password]=paradox@123", QB_AUTH_SECRET));die;
         $signature = hash_hmac('sha1', $signature_string, QB_AUTH_SECRET);
-        echo $nonce . '<br>';
-        echo $timestamp . '<br>';
-        echo $signature . '<br>';
 
         $post_body = http_build_query(array(
             'application_id' => QB_APPLICATION_ID,
@@ -346,6 +345,7 @@ class ShowController extends Controller {
             'user[login]' => $data['login'],
             'user[password]' => $data['password']
         ));
+
         // Configure cURL
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/' . QB_PATH_SESSION);
@@ -355,18 +355,21 @@ class ShowController extends Controller {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // Receive server response
         // Execute request and read response
         $response = curl_exec($curl);
-        dd($response);
-
-        // Close connection
-        curl_close($curl);
         // Check errors
-        if ($response) {
-            dd($response);
-
-            return json_decode($response);
+        if ($response === false) {
+            $error_message = curl_error($curl);
+            $error_code = curl_errno($curl);
+            //  // Output the error message and error code
+            // echo "cURL error: $error_message (Error code: $error_code)";die;
+            // // Close connection
+            // curl_close($curl);
+            return response()->json(['status' => 0, 'message' =>$error_message.' - Error Code'.$error_code]);
             // echo $session_response->session->token;
         } else {
-            return response()->json(['status' => 0, 'message' => "Something went wrong"]);
+            // Close connection
+            dd(json_decode($response));
+            curl_close($curl);
+            return response()->json(['status' => 1, 'message' => "Success",'data' => json_decode($response)]);
         }
     }
 
