@@ -55,7 +55,7 @@ class UserController extends Controller {
             return response()->json(['status' => 0, 'message' => "Email exists please change it"]);
         }
         try {
-            $fillableData = ['name' => $input['name'], 'email' => $input['email'], 'password' => Hash::make($input['password']), 'is_verified' => 0, 'install_date' => Date('Y-m-d'), 'phone_number' => $input['phone_number']];
+            $fillableData = ['name' => $input['name'],'gender' => $input['gender'], 'email' => $input['email'], 'password' => Hash::make($input['password']), 'is_verified' => 0, 'install_date' => Date('Y-m-d'), 'phone_number' => $input['phone_number']];
             if (!empty($input['device_type'])) {
                 $fillableData['device_type'] = $input['device_type'];
             } else {
@@ -158,6 +158,7 @@ class UserController extends Controller {
         if($user->status == 'Block'){
             return response()->json(['status' => 0, 'message' => 'Your account is blocked at this moment']);
         }
+
         if($user->is_verified == 0){
             $fourdigitrandom = rand(1000,9999);
             $user->fill(['email_verification_code' => $fourdigitrandom]);
@@ -169,6 +170,7 @@ class UserController extends Controller {
             return response()->json(['status' => 0, 'message' => 'Wrong password provided.']);
         }
         $userdetail = User::find($user->id);
+
         $fillableData = [];
         if (!empty($input['device_type'])) {
             $fillableData['device_type'] = $input['device_type'];
@@ -181,8 +183,12 @@ class UserController extends Controller {
         }
         $userdetail->fill($fillableData);
         $userdetail->save();
+
         $userdetail = User::find($user->id);
+
         $userdetail->token = $userdetail->createToken('paradoxa')->accessToken;
+        // dd($userdetail);
+
         return response()->json(['status' => 1, 'message' => 'Login successful', 'data' => $userdetail]);
     }
 
@@ -376,13 +382,17 @@ class UserController extends Controller {
             }
         }
         $input = $request->all();
+
         try {
+            dd($request->all());
             $fillableData = ['name' => $input['name'], 'phone_number' => $input['phone_number'], 'gender' => $input['gender'], 'image' => (!empty($input['image']))?$input['image']:""];
             if(!empty($request->email)){
                 $fillableData['email'] = $input['email'];
             }
+
             $user->fill($fillableData);
             $user->save();
+
             return response()->json(['status' => 1, 'message' => 'Profile updated successfully']);
         } catch (Exception $e) {
             return response()->json(['status' => 0, 'message' => 'Something went wrong']);

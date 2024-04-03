@@ -61,7 +61,7 @@ class ShowController extends Controller {
             $team1Data = Team::with('players')->find($input['team_1_id'])->toArray();
             $team2Data = Team::with('players')->find($input['team_2_id'])->toArray();
             $newDataField['team_1_data'] = json_encode($team1Data);
-            $newDataField['team_1_data'] = json_encode($team2Data);
+            $newDataField['team_2_data'] = json_encode($team2Data);
             if (!empty($request->file('banner'))) {
                 $banner_icon = $request->file('banner');
 
@@ -307,22 +307,35 @@ class ShowController extends Controller {
 
     public function make_show_live($id) {
         $user = Auth::user();
-
         if(empty($user->quickblox_login)){
             $adminDetail = Managers::find(1);
-            $admin_session = $this->create_session(['login' => $adminDetail->quickblox_login,'password' => base64_decode($adminDetail->quickblox_password)]);
+            // $admin_session = $this->create_session(['login' => $adminDetail->quickblox_login,'password' => ($adminDetail->quickblox_password)]);
+            // dd($admin_session);
+
             $password = $this->random_strings(8);
+
             // $password = 'Admin@123';
-            $createUser = $this->create_user($admin_session->session->token,['email' => $user->email,'login' => $user->email,'password' => $password,'full_name' => $user->first_name.' '.$user->last_name]);
+            $data = [
+                'email' => $user->email,
+                'login' => $user->email,
+                'password' => $password,
+                'full_name' => $user->first_name . ' ' . $user->last_name
+            ];
+
+            $createUser = $this->create_user($data);
             $user->fill(['quickblox_login' => $user->email,'quickblox_password' => base64_encode($password)]);
             $user->save();
-            $session = $this->create_session(['login' => $user->email,'password' => $password]);
+          //  $session = $this->create_session(['login' => $user->email,'password' => $password]);
         } else {
-            $session = $this->create_session(['login' => $user->quickblox_login,'password' => base64_decode($user->quickblox_password)]);
+           // $session = $this->create_session(['login' => $user->quickblox_login,'password' => base64_decode($user->quickblox_password)]);
         }
 
         $show = Show::find($id);
-        $roomdetail = $this->create_room($session->session->token,['type' => 1,'name' => $show->title]);
+        $roomData = [
+            'type' =>1,
+            'name' => $show->title
+        ];
+       $roomdetail = $this->create_room($roomData);
         $show->fill(['live_at' => Date("Y-m-d H:i:s"),'chat_room_id' => $roomdetail->_id]);
         $show->save();
         return response()->json(['status' => 1, 'message' => "Show Lived Now"]);
@@ -332,10 +345,9 @@ class ShowController extends Controller {
         $nonce = rand();
         $timestamp = time();
         $signature_string = "application_id=" . QB_APPLICATION_ID . "&auth_key=" . QB_AUTH_KEY . "&nonce=" . $nonce . "&timestamp=" . $timestamp . "&user[login]=" . $data['login'] . "&user[password]=" . $data['password'];
+        // echo "<pre>";
+        // print_r(hash_hmac('sha1', "application_id=102994&auth_key=ak_nAHpcXum6AEpwMw&nonce=723027416&timestamp=1712133208&user[login]=developer@worksdelight.org&user[password]=paradox@123", QB_AUTH_SECRET));die;
         $signature = hash_hmac('sha1', $signature_string, QB_AUTH_SECRET);
-        echo $nonce . '<br>';
-        echo $timestamp . '<br>';
-        echo $signature . '<br>';
 
         $post_body = http_build_query(array(
             'application_id' => QB_APPLICATION_ID,
@@ -346,6 +358,7 @@ class ShowController extends Controller {
             'user[login]' => $data['login'],
             'user[password]' => $data['password']
         ));
+
         // Configure cURL
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/' . QB_PATH_SESSION);
@@ -355,30 +368,109 @@ class ShowController extends Controller {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // Receive server response
         // Execute request and read response
         $response = curl_exec($curl);
-        dd($response);
-
-        // Close connection
-        curl_close($curl);
         // Check errors
-        if ($response) {
-            dd($response);
-
-            return json_decode($response);
+        if ($response === false) {
+            $error_message = curl_error($curl);
+            $error_code = curl_errno($curl);
+            //  // Output the error message and error code
+            // echo "cURL error: $error_message (Error code: $error_code)";die;
+            // // Close connection
+            // curl_close($curl);
+            return response()->json(['status' => 0, 'message' =>$error_message.' - Error Code'.$error_code]);
             // echo $session_response->session->token;
         } else {
-            return response()->json(['status' => 0, 'message' => "Something went wrong"]);
+            // Close connection
+            dd(json_decode($response));
+            curl_close($curl);
+            return response()->json(['status' => 1, 'message' => "Success",'data' => json_decode($response)]);
         }
     }
 
-    public function create_user($token, $data){
-        $data = ['user'=>$data];
+    // public function create_user($token, $data){
+    //     $data = ['user'=>$data];
+
+    //     // Build post body
+    //     $post_body = json_encode($data);
+
+    //     // Configure cURL
+    //     $curl = curl_init();
+    //     curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/' . 'users.json'); // Full path is - https://api.quickblox.com/session.json
+    //     curl_setopt($curl, CURLOPT_POST, true); // Use POST
+    //     curl_setopt($curl, CURLOPT_POSTFIELDS, $post_body); // Setup post body
+    //     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); // Receive server response
+    //     curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    //         'Content-Type: application/json',
+    //         'QuickBlox-REST-API-Version: 0.1.0',
+    //         'QB-Token: '.$token
+    //     ));
+    //     // Execute request and read response
+    //     $response = curl_exec($curl);
+    //     $responseJSON = json_decode($response);
+    //     // Check errors
+    //     if ($responseJSON) {
+    //         return $responseJSON;
+    //     } else {
+    //         $error = curl_error($curl). '(' .curl_errno($curl). ')';
+    //         return response()->json(['status' => 0, 'message' => $error]);
+    //     }
+    //     // Close connection
+    //     curl_close($curl);
+    // }
+    public function create_user($data){
+
+
+        $curl = curl_init();
+        $json_data = json_encode([
+            "user" => $data
+        ]);
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://api.quickblox.com/users.json',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS => $json_data, // Set the JSON-encoded data
+
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: ApiKey m3U3x_1bSSIBUAyTxka2DAwQy8GZhCoUGp9ZQer8_Iw'
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $responseJSON = json_decode($response);
+        // Check errors
+        if ($responseJSON) {
+            return $responseJSON;
+        } else {
+            $error = curl_error($curl). '(' .curl_errno($curl). ')';
+            return response()->json(['status' => 0, 'message' => $error]);
+        }
+        curl_close($curl);
+        // echo $response;
+
+    }
+
+    function random_strings($length_of_string){
+        // String of all alphanumeric character
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+        // Shufle the $str_result and returns substring of specified length
+        return substr(str_shuffle($str_result), 0, $length_of_string);
+    }
+
+   /* function create_room($token, $data){
 
         // Build post body
         $post_body = json_encode($data);
 
         // Configure cURL
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/' . 'users.json'); // Full path is - https://api.quickblox.com/session.json
+        curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/' . 'chat/Dialog.json');
         curl_setopt($curl, CURLOPT_POST, true); // Use POST
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_body); // Setup post body
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -400,17 +492,8 @@ class ShowController extends Controller {
         }
         // Close connection
         curl_close($curl);
-    }
-
-    function random_strings($length_of_string){
-        // String of all alphanumeric character
-        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-        // Shufle the $str_result and returns substring of specified length
-        return substr(str_shuffle($str_result), 0, $length_of_string);
-    }
-
-    function create_room($token, $data){
+    }*/
+     function create_room($data){
 
         // Build post body
         $post_body = json_encode($data);
@@ -425,9 +508,9 @@ class ShowController extends Controller {
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'QuickBlox-REST-API-Version: 0.1.0',
-            'QB-Token: '.$token
-        ));
-        // Execute request and read response
+            'Authorization: ApiKey m3U3x_1bSSIBUAyTxka2DAwQy8GZhCoUGp9ZQer8_Iw'
+         ));
+        // Execute request and read responses
         $response = curl_exec($curl);
         $responseJSON = json_decode($response);
         // Check errors

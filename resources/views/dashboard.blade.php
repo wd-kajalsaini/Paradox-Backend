@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="card-body p-0 p-md-4">
-                                <div class="chart-bar-dashboard flot-chart " style="height: 450px"></div>
+                                <div class="chart-bar-dashboard flot-chart" style="height: 450px"></div>
                             </div>
                         </div>
                         <!-- Table Card End-->
@@ -115,7 +115,7 @@
 
                         <div class="card-body p-0">
                             <!-- Datatable Start-->
-                            <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                            <table class="table table-striped table-hover my-4 w-100" id="contactUs">
                                 <thead>
                                     <tr>
                                         <th data-priority="1">{{__('Id')}}</th>
@@ -186,7 +186,7 @@
 <script src="{{ asset('vendor/jquery.flot.spline/jquery.flot.spline.js')}}"></script>
 
 <script>
-    $('#datatable1').on('click', '.show_message', function() {
+    $('#contactUs').on('click', '.show_message', function() {
         var thiss = $(this);
         var data_id = $(this).data('id');
         $.ajax({
