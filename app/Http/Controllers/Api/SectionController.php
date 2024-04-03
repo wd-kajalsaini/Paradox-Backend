@@ -30,6 +30,7 @@ class SectionController extends Controller {
         return response()->json(['status' => 1, 'data' => $home]);
     }
 
+
     public function banner(){
         $shows = ShowBanner::with(['show' =>function($query){
             $query->select('id','title','banner','start_time','end_time','date','chat_room_id','live_at','stop_at');

@@ -387,7 +387,6 @@ class UserController extends Controller {
         $input = $request->all();
 
         try {
-            dd($request->all());
             $fillableData = ['name' => $input['name'], 'phone_number' => $input['phone_number'], 'gender' => $input['gender'], 'image' => (!empty($input['image']))?$input['image']:""];
             if(!empty($request->email)){
                 $fillableData['email'] = $input['email'];
