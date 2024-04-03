@@ -71,8 +71,8 @@
                                 <label for="validationCustom01">Show Start Time</label>
                             </div>
                             <div class="col-8 col-md-10">
-                                <input type="text" class="form-control 24hours-timepicker" name="start_time" placeholder="" value="" style="background-color:white" required>
-                                <div class="invalid-feedback">Please enter title</div>
+                                <input type="text" class="form-control 24hours-timepicker" name="start_time" placeholder="" value="" style="background-color:white" required data-parsley-required-message="Please enter start time">
+                                <div class="invalid-feedback">Please enter start time</div>
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -80,8 +80,8 @@
                                 <label for="validationCustom01">Show End Time</label>
                             </div>
                             <div class="col-8 col-md-10">
-                                <input type="text" class="form-control 24hours-timepicker" name="end_time" placeholder="" value="" style="background-color:white" required>
-                                <div class="invalid-feedback">Please enter title</div>
+                                <input type="text" class="form-control 24hours-timepicker" name="end_time" placeholder="" value="" style="background-color:white" required data-parsley-required-message="Please enter end time">
+                                <div class="invalid-feedback">Please enter end time</div>
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -90,9 +90,8 @@
                             </div>
                             <div class="col-8 col-md-10">
                                 <div class="input-group date" id="datetimepicker1">
-                                    <input class="form-control" type="text" name="date" readonly="readonly" style="background-color:white;" required="">
-                                    <span class="fas fa-calendar-alt input-group-append input-group-addon">
-                                    </span>
+                                    <input class="form-control" type="text" name="date" readonly="readonly" style="background-color:white;" required data-parsley-required-message="Please select show date">
+                                    <span class="fas fa-calendar-alt input-group-append input-group-addon"></span>
                                 </div>
                             </div>
                         </div>
@@ -102,12 +101,12 @@
                             </div>
                             <div class="col-8 col-md-10">
                                 <div class="input-group date" id="datetimepicker2">
-                                    <input class="form-control" type="text" name="expiry_date" readonly="readonly" style="background-color:white;" required="">
-                                    <span class="fas fa-calendar-alt input-group-append input-group-addon">
-                                    </span>
+                                    <input class="form-control" type="text" name="expiry_date" readonly="readonly" style="background-color:white;" required data-parsley-required-message="Please select expiry date" data-parsley-starttimecheck="true">
+                                    <span class="fas fa-calendar-alt input-group-append input-group-addon"></span>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-3">
                             <div class="col-4 col-md-2 p0">
                                 <label for="validationCustom01">Video URL </label>
@@ -195,6 +194,23 @@
 
 @section('script')
 <script>
+        window.Parsley.addValidator('starttimecheck', {
+        validateString: function(value, requirement) {
+            var startDate = $('#datetimepicker1 input').val();
+            var startTime = $('input[name="start_time"]').val();
+            var endDate = $('#datetimepicker2 input').val();
+            var endTime = $('input[name="end_time"]').val();
+
+            var startDateTime = new Date(startDate + ' ' + startTime);
+            var endDateTime = new Date(endDate + ' ' + endTime);
+
+            return endDateTime > startDateTime;
+        },
+        messages: {
+            en: 'Expiry date and time must be greater than start date and time.'
+        }
+        });
+
     $('#datetimepicker1, #datetimepicker2').datepicker({
         startDate: new Date(),
         format: 'yyyy-mm-dd'

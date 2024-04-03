@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $exception) {
        if ($request->expectsJson()) {
-           return response()->json(['status' => 0, 'message' => 'Invalid token']);
+           return response()->json(['status' => 0, 'message' => $exception->getMessage()]);
        }
         if ($this->isHttpException($exception)) {
             $actionurl = url()->full();
