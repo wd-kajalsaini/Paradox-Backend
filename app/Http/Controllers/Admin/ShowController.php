@@ -61,7 +61,7 @@ class ShowController extends Controller {
             $team1Data = Team::with('players')->find($input['team_1_id'])->toArray();
             $team2Data = Team::with('players')->find($input['team_2_id'])->toArray();
             $newDataField['team_1_data'] = json_encode($team1Data);
-            $newDataField['team_1_data'] = json_encode($team2Data);
+            $newDataField['team_2_data'] = json_encode($team2Data);
             if (!empty($request->file('banner'))) {
                 $banner_icon = $request->file('banner');
 
