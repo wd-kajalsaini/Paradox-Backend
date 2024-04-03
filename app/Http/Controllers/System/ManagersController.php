@@ -75,6 +75,7 @@ class ManagersController extends Controller
                 $managerData['image']="";
             }
             $managerData['role'] =$managerType ->name;
+
             $manager = new Managers();
             $manager->fill($managerData);
 
@@ -413,7 +414,10 @@ class ManagersController extends Controller
                 ]);
 
                 $managerData['password'] = Hash::make($request->password);
+
             }
+            // $managerData['quickblox_password'] =base64_encode('paradox@123');
+
             if ($request->hasFile('image')) {
 
                 $image  = $request->file('image');

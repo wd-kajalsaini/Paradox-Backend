@@ -16,6 +16,7 @@ class CreateAppContentFieldsTable extends Migration
         Schema::create('app_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('fields');
             $table->timestamps();
         });
     }

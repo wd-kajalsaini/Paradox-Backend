@@ -307,6 +307,7 @@ class ShowController extends Controller {
 
     public function make_show_live($id) {
         $user = Auth::user();
+
         if(empty($user->quickblox_login)){
             $adminDetail = Managers::find(1);
             $admin_session = $this->create_session(['login' => $adminDetail->quickblox_login,'password' => base64_decode($adminDetail->quickblox_password)]);
@@ -331,8 +332,10 @@ class ShowController extends Controller {
         $nonce = rand();
         $timestamp = time();
         $signature_string = "application_id=" . QB_APPLICATION_ID . "&auth_key=" . QB_AUTH_KEY . "&nonce=" . $nonce . "&timestamp=" . $timestamp . "&user[login]=" . $data['login'] . "&user[password]=" . $data['password'];
-
         $signature = hash_hmac('sha1', $signature_string, QB_AUTH_SECRET);
+        echo $nonce . '<br>';
+        echo $timestamp . '<br>';
+        echo $signature . '<br>';
 
         $post_body = http_build_query(array(
             'application_id' => QB_APPLICATION_ID,
@@ -343,7 +346,6 @@ class ShowController extends Controller {
             'user[login]' => $data['login'],
             'user[password]' => $data['password']
         ));
-
         // Configure cURL
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, QB_API_ENDPOINT . '/' . QB_PATH_SESSION);
@@ -353,12 +355,16 @@ class ShowController extends Controller {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // Receive server response
         // Execute request and read response
         $response = curl_exec($curl);
+        dd($response);
+
         // Close connection
         curl_close($curl);
         // Check errors
         if ($response) {
+            dd($response);
+
             return json_decode($response);
-            echo $session_response->session->token;
+            // echo $session_response->session->token;
         } else {
             return response()->json(['status' => 0, 'message' => "Something went wrong"]);
         }

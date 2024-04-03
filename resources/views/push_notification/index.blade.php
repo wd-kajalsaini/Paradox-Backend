@@ -32,7 +32,7 @@
                             <div class=" ">
                                 <!-- Datatable Start-->
                                 <div class="table-responsive border-0">
-                                    <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                                    <table class="table table-striped table-hover my-4 w-100" id="datatableNotification">
                                         <thead>
                                             <tr>
                                                 <th data-priority="1">{{__('Id')}}</th>

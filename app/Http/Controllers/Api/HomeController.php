@@ -21,6 +21,7 @@ class HomeController extends Controller {
 
     /* App Content Data with limitations */
 
+
     public function index() {
         $app_contents = AppContent::get();
         foreach ($app_contents as $app_content_key => $app_content) {
