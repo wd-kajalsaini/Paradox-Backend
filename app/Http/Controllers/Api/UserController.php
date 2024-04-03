@@ -55,7 +55,7 @@ class UserController extends Controller {
             return response()->json(['status' => 0, 'message' => "Email exists please change it"]);
         }
         try {
-            $fillableData = ['name' => $input['name'], 'email' => $input['email'], 'password' => Hash::make($input['password']), 'is_verified' => 0, 'install_date' => Date('Y-m-d'), 'phone_number' => $input['phone_number']];
+            $fillableData = ['name' => $input['name'],'gender' => $input['gender'], 'email' => $input['email'], 'password' => Hash::make($input['password']), 'is_verified' => 0, 'install_date' => Date('Y-m-d'), 'phone_number' => $input['phone_number']];
             if (!empty($input['device_type'])) {
                 $fillableData['device_type'] = $input['device_type'];
             } else {
@@ -384,6 +384,7 @@ class UserController extends Controller {
         $input = $request->all();
 
         try {
+            dd($request->all());
             $fillableData = ['name' => $input['name'], 'phone_number' => $input['phone_number'], 'gender' => $input['gender'], 'image' => (!empty($input['image']))?$input['image']:""];
             if(!empty($request->email)){
                 $fillableData['email'] = $input['email'];

@@ -51,7 +51,7 @@
                                 <button class="mb-1 btn btn-danger delete_show" type="button" data-id="{{$show->id}}" title="Delete"><i class="fa fa-trash"></i> </button>
                                 <a href="{{ route('editShow',$show->id) }}" class="mb-1 btn btn-info" type="button" title="Edit"><i class="fa fa-edit"></i></a>
                                 @if(is_null($show->live_at))
-                                <button class="mb-1 btn btn-success make_show_live" type="button" data-id="{{$show->id}}" title="Live Now"><i class="fa fa-play"></i></button>
+                                    <button class="mb-1 btn btn-success make_show_live" type="button" data-id="{{$show->id}}" title="Live Now"><i class="fa fa-play"></i></button>
                                 @endif
                             </td>
                         </tr>
