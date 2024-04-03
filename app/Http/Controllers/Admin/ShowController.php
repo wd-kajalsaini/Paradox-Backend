@@ -488,12 +488,14 @@ class ShowController extends Controller {
             return $responseJSON;
         } else {
             $error = curl_error($curl). '(' .curl_errno($curl). ')';
-            return response()->json(['status' => 0, 'message' => $error]);
+            return response()->json(
+                
+            );
         }
         // Close connection
         curl_close($curl);
     }*/
-     function create_room($data){
+    function create_room($data){
 
         // Build post body
         $post_body = json_encode($data);
