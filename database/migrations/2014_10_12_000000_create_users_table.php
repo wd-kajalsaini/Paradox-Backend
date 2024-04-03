@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('app_version')->nullable();
             $table->string('notification_token')->nullable();
             $table->string('email_verification_code')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

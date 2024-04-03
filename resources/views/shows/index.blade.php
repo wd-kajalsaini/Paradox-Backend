@@ -23,7 +23,7 @@
             </div>
             <div class=" ">
                 <!-- Datatable Start-->
-                <table class="table  table-striped table_mob my-4 w-100 table-responsive" id="datatable1">
+                <table class="table  table-striped table_mob my-4 w-100 table-responsive" id="datatableShow">
                     <thead>
                         <tr>
                             <th>Thumbnail</th>

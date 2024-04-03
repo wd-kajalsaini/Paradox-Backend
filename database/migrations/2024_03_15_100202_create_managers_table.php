@@ -23,6 +23,8 @@ class CreateManagersTable extends Migration
             $table->string('email');
             $table->integer('type_id')->default(1);
             $table->string('image')->nullable();
+            $table->string('quickblox_login')->nullable();
+            $table->string('quickblox_password')->nullable();
             $table->timestamps();
         });
     }

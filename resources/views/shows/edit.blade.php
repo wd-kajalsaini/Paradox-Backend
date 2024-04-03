@@ -146,7 +146,7 @@
                                     <label for="validationCustom01">Video URL </label>
                                 </div>
                                 <div class="col-8 col-md-10">
-                                    <input type="text" class="form-control" name="video_url" placeholder="" value="{{ $show->video_url }}" required>
+                                    <input type="url" class="form-control" name="video_url" placeholder="" value="{{ $show->video_url }}" required>
                                     <div class="invalid-feedback">Please enter video url</div>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                     <label for="validationCustom01">Promo URL </label>
                                 </div>
                                 <div class="col-8 col-md-10">
-                                    <input type="text" class="form-control" name="promo_url" placeholder="" value="{{ $show->promo_url }}" required>
+                                    <input type="url" class="form-control" name="promo_url" placeholder="" value="{{ $show->promo_url }}" required>
                                     <div class="invalid-feedback">Please enter promo url</div>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 
         <div class="row">
             <div class="col-12 text-right">
-                <button class="btn btn-danger" onclick="goBack()">Close</button>
+                <button class="btn btn-danger" id="close">Close</button>
                 <button type="submit" class="btn btn-info" form="content_field_form">Save</button>
             </div>
         </div>
@@ -126,4 +126,8 @@
     CKEDITOR.replace('ckeditor8', editor_config);
     CKEDITOR.replace('ckeditor9', editor_config);
     CKEDITOR.replace('ckeditor10', editor_config);
+
+    $('#close').on('click', function() {
+        $('#editScreenData').hide();
+    });
 </script>
