@@ -106,7 +106,7 @@
                      <div class="pl-0 pr-0">
 
                         <div class="row">
-                           <div class="col-sm-3">
+                           <div class="col-lg-6">
                               <ul class="list-group">
                                  @foreach($managerTypes as $managerType)
                                  <li class="list-group-item mb-2">

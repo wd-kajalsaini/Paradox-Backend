@@ -22,7 +22,7 @@
                         <h4 class="mt-3">Subscribe Users</h4>
                     </div>
                     <div class="col-sm-2 text-right">
-                        <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button" data-toggle="modal" data-target="#notificationModal">Send Notification</button>
+                        <button class="btn btn-info mt-3" type="button" data-toggle="modal" data-target="#notificationModal">Send Notification</button>
                     </div>
                 </div>
                 <div class="row ">

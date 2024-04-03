@@ -2,10 +2,10 @@
 @section('content')
 
 <!-- Main section-->
-<section  class="section-container">
+<section class="section-container">
     <!-- Page content-->
     <div class="content-wrapper">
-        <div class="content-heading">
+        <div class="content-heading px-4">
             <div class="text-dark">Show : {{ $show->title }}</div>
         </div><!-- START cards box-->
 
@@ -13,21 +13,23 @@
             <!-- Table Card Start-->
             <div class="card pl-0 pr-0 border">
                 <div class="card-header">
-                    <div class="col-sm-10 ">
-                        <h4 class="mt-3">Questions</h4>
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        <a href="{{ route('showQuestionAdd',$id)}}">
-                            <button class="btn theme-blue-btn btn-md theme-btn mt-3" type="button">Create New Question</button>
-                        </a>
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <h4 class="mt-3">Questions</h4>
+                        </div>
+                        <div class="col-8 text-right">
+                            <a href="{{ route('showQuestionAdd',$id)}}">
+                                <button class="btn btn-info" type="button">Create New Question</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="row ">
 
                     <div class="col-sm-12">
-                        <div class="table-responsive">
+                        <div class="">
                             <!-- Datatable Start-->
-                            <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                            <table class="table  table-striped table_mob my-4 w-100 table-responsive" id="datatable1">
                                 <thead>
                                     <tr>
                                         <th data-priority="1">Id</th>
@@ -70,36 +72,38 @@
 
 @section('script')
 <script>
-$(document).on('click', ".delete_question", function () {
-    var thiss = $(this);
-    var data_id = thiss.data('id');
-    swal({
-        title: "Are you sure!",
-        text: "It will permanently delete this question",
-        icon: "warning",
-        buttons: ["Cancel", "Yes"],
-        dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
-            $.ajax({
-                url: "{{route('showsListing')}}" + '/delete_question/' + data_id,
-                type: "DELETE",
-                data: {"_token": "{{ csrf_token() }}"},
-                success: function (response) {
-                    var result = response;
-                    if (result.status == 1) {
-                        window.location = "";
-                    } else {
-                        swal('Error', result.message, 'error');
-                    }
-                    return false;
-                },
-            });
-            return true;
-        } else {
-            return false;
-        }
+    $(document).on('click', ".delete_question", function() {
+        var thiss = $(this);
+        var data_id = thiss.data('id');
+        swal({
+            title: "Are you sure!",
+            text: "It will permanently delete this question",
+            icon: "warning",
+            buttons: ["Cancel", "Yes"],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{route('showsListing')}}" + '/delete_question/' + data_id,
+                    type: "DELETE",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        var result = response;
+                        if (result.status == 1) {
+                            window.location = "";
+                        } else {
+                            swal('Error', result.message, 'error');
+                        }
+                        return false;
+                    },
+                });
+                return true;
+            } else {
+                return false;
+            }
+        })
     })
-})
 </script>
 @endsection
