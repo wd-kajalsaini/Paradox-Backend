@@ -86,7 +86,7 @@
 
 <!---Block End-->
 
-<footer class="footer-container"><span>&copy; 2020 - Paradox</span></footer>
+<footer class="footer-container"><span>&copy; 2024 - Paradox</span></footer>
 
  </div>
  <!-- =============== VENDOR SCRIPTS ===============-->

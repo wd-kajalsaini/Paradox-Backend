@@ -29,7 +29,7 @@
             <div>Add New Show</div>
             <!-- START Language list-->
         </div>
-        <div class="card">
+        <div class="card m-3 md-m-0">
             <div class="card-header p-2">
                 <div class="row align-items-center">
                     <div class="col-8 ">
@@ -168,7 +168,7 @@
                                         <input type='file' id="imgInp" name="banner" />
                                     </div>
                                     <div class="col-sm-6">
-                                        <b>Preview:</b>
+                                        <b>Preview</b>
                                         <div class="preview_thumb mt-2"><img id="blah" src="{{ asset('img/avatarEmpty.png') }}" alt="Show banner" />
                                             <div class="del_btn" id="delet_photo"><i class="fa fa-times"></i></div>
                                         </div>

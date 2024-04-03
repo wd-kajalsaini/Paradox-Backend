@@ -19,9 +19,9 @@
                     </div>
                 </div>
             </div>
-            <div class="table-responsive table_mob">
+            <div class="">
                 <!-- Datatable Start-->
-                <table class="table table-striped my-4 w-100" id="datatable1">
+                <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
                     <thead>
                         <tr>
                             <th>Thumbnail</th>

@@ -22,7 +22,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @endif 
+                @endif
 
 
                 <div class="row">
@@ -32,8 +32,8 @@
                         <div class="card pl-0 pr-0 border">
                             <div class=" ">
                                 <!-- Datatable Start-->
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-hover my-4 w-100" id="datatable1">
+                                <div class="">
+                                    <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
                                         <thead>
                                             <tr>
                                                 <th data-priority="1">{{__('Id')}}</th>
@@ -55,8 +55,8 @@
                                                 <td>{{ $kvitel_product->price }}</td>
                                                 <td>{{ !empty($kvitel_product->is_best)?"Yes":"No" }}</td>
                                                 <td><?php if (!empty($kvitel_product->logo)) {
-                        echo "<img src='" . $kvitel_product->logo . "' class='roundimg smallimg' height='30'>";
-                    } ?></td>
+                                                        echo "<img src='" . $kvitel_product->logo . "' class='roundimg smallimg' height='30'>";
+                                                    } ?></td>
                                                 <td>{{ $kvitel_product->length }}</td>
                                                 <td class="text-right">
                                                     <button class="mb-1 btn btn-danger delete_product" type="button" title="Delete" data-id="{{$kvitel_product->id}}"><i class="fa fa-trash"></i></button>
@@ -79,7 +79,7 @@
 </section>
 
 <script>
-    $(document).on('click', ".delete_product", function () {
+    $(document).on('click', ".delete_product", function() {
         var thiss = $(this);
         var data_id = thiss.data('id');
         swal({
@@ -93,8 +93,10 @@
                 $.ajax({
                     url: "{{route('kvitelProductsListing')}}" + '/delete/' + data_id,
                     type: "DELETE",
-                    data: {"_token": "{{ csrf_token() }}"},
-                    success: function (response) {
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
                         var result = response;
                         if (result.status == 1) {
                             window.location = "";
@@ -110,10 +112,10 @@
             }
         })
     })
-    $(document).on('click', '.import_button', function () {
+    $(document).on('click', '.import_button', function() {
         $('.import_file').trigger('click');
     })
-    $(document).on('change', '.import_file', function () {
+    $(document).on('change', '.import_file', function() {
         $('#import_form').submit();
     })
 </script>

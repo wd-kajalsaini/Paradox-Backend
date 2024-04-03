@@ -1,7 +1,8 @@
+
 @extends('layouts.header')
 @section('content')
 <!-- Main section-->
-<section  id="sectionManager"class="section-container">
+<section id="sectionManager" class="section-container">
 
     <!-- Page content-->
     <div class="content-wrapper">
@@ -62,7 +63,7 @@
                                     <div class="col-sm-12 noActions">
                                         <div class="form-group">
                                             <label class="col-form-label">Action</label>
-                                            <select class="form-control  action @error('action') is-invalid @enderror" style="border-right: 1px solid  red;" name="route" >
+                                            <select class="form-control  action @error('action') is-invalid @enderror" style="border-right: 1px solid  red;" name="route">
                                                 <option value="">{{__('Choose')}}....</option>
                                                 @foreach($nActions as $action)
                                                 <option value="{{$action}}"><?php echo ucfirst(camelToTitle($action)); ?></option>
@@ -79,7 +80,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group" id="iconLists">
                                             <label class="col-form-label">Icon <span class="text-danger">*</span></label>
-                                            <input type="text" id="someName" name="icon" class="icon-picker @error('icon') is-invalid @enderror" >
+                                            <input type="text" id="someName" name="icon" class="icon-picker @error('icon') is-invalid @enderror">
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +114,8 @@
 </section>
 <?php
 
-function camelToTitle($camelStr) {
+function camelToTitle($camelStr)
+{
     $intermediate = preg_replace('/(?!^)([[:upper:]][[:lower:]]+)/', ' $0', $camelStr);
     $titleStr = preg_replace('/(?!^)([[:lower:]])([[:upper:]])/', '$1 $2', $intermediate);
     return str_replace(' Listing', '', str_replace(' Add', '', $titleStr));
@@ -121,21 +123,18 @@ function camelToTitle($camelStr) {
 ?>
 
 <script>
-
-    $(document).ready(function () {
-        $(".showAction").change(function () {
+    $(document).ready(function() {
+        $(".showAction").change(function() {
 
             var showAction = $(this).val();
-            if (showAction == 'no')
-            {
+            if (showAction == 'no') {
                 $('.yesActions').hide();
                 $('.yesActions').find('.action').prop('disabled', true);
                 $('.noActions').show();
                 $('.noActions').find('.action').prop('disabled', false);
 
             }
-            if (showAction == 'yes')
-            {
+            if (showAction == 'yes') {
                 $('.yesActions').show();
                 $('.yesActions').find('.action').prop('disabled', false);
                 $('.noActions').hide();
@@ -143,21 +142,18 @@ function camelToTitle($camelStr) {
             }
         });
         var showAction = $('.showAction').val();
-        if (showAction == 'no')
-        {
+        if (showAction == 'no') {
             $('.yesActions').hide();
             $('.yesActions').find('.action').prop('disabled', true);
             $('.noActions').show();
             $('.noActions').find('.action').prop('disabled', false);
         }
-        if (showAction == 'yes')
-        {
+        if (showAction == 'yes') {
             $('.yesActions').show();
             $('.yesActions').find('.action').prop('disabled', false);
             $('.noActions').hide();
             $('.noActions').find('.action').prop('disabled', true);
         }
     });
-
 </script>
 @endsection

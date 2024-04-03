@@ -6445,7 +6445,20 @@ font-size: 12px !important
     padding: 10px 10px;
 }
 
+.input-group-addon,
+.input-group-btn {
+    width: auto !important;
+    height: 35px !important;
+}
+.table-responsive{
+    display: inline-table;
+}
 
+@media (max-width: 1600px) {
+    .table-responsive {
+            display: block !important;
+        }
+}
 
 @media (max-width: 576px) {
 .content-wrapper {
