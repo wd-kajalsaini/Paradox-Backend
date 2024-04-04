@@ -368,6 +368,51 @@
                                     }
                                 }
                     });
+                    $('#datatableGroup').DataTable({
+
+                    'paging': true, // Table pagination
+                    'ordering': true, // Column ordering
+                    'info': true, // Bottom left status text
+                    'stateSave': true,
+                    "aLengthMenu": [[10, 25, 50, - 1], [10, 25, 50, "All"]],
+                    "columnDefs": [{
+                                    "orderable": false,
+                                    "targets": [3,4,5]
+                                }],
+                    responsive: false,
+                    // Text translation options
+                    // Note the required keywords between underscores (e.g _MENU_)
+
+                    oLanguage: {
+                    sEmptyTable: "{{__('Empty Data Dable')}}",
+                            sZeroRecords: "{{__('No records')}}",
+                            sSearch: '<em class="fas fa-search"></em>',
+                            sLengthMenu: '_MENU_ {{__("records per page")}}',
+                            sinfo: 'Showing page _PAGE_ of _PAGES_',
+                            zeroRecords: 'Nothing found - sorry',
+                            infoEmpty: 'No records available',
+                            infoFiltered: '(filtered from _MAX_ total records)',
+                            oPaginate: {
+                            sNext: '<em class="fa fa-caret-right"></em>',
+                                    sPrevious: '<em class="fa fa-caret-left"></em>'
+                            }
+                    },
+                    dom: '<"pull-left ml-2"B><"pull-right mr-2"l>T<"pull-left"f>gtip',
+                    buttons: [
+                            {
+                                extend: 'excel',
+                                className: 'btn-info',
+                                title: 'XLS-File',
+                                text: 'Export'
+                            }
+                        ],
+                        initComplete: function () {
+                            var table = this.api();
+                            if (table.rows().count() === 0) {
+                                $('.btn-info').hide(); // Hide export button if no data
+                            }
+                        }
+                    });
                     $('#datatableNotification').DataTable({
 
                         'paging': true, // Table pagination
@@ -411,7 +456,7 @@
                             "aLengthMenu": [[10, 25, 50, - 1], [10, 25, 50, "All"]],
                             "columnDefs": [{
                                 "orderable": false,
-                                "targets": [0, 7]
+                                "targets":[1,7]
                             }],
                             responsive: false,
                             // Text translation options
