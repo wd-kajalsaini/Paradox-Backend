@@ -26,8 +26,8 @@
                 <table class="table  table-striped table_mob my-4 w-100 table-responsive" id="datatableShow">
                     <thead>
                         <tr>
-                            <th>Thumbnail</th>
                             <th>Show Title</th>
+                            <th>Thumbnail</th>
                             <th>Show Date </th>
                             <th>Show Timing </th>
                             <th>Expiry Date</th>
@@ -40,8 +40,8 @@
                         @foreach($shows as $show)
 
                         <tr class="gradeX">
-                            <td><img src="{{ (!empty($show->banner))?$show->banner:asset('simg/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
                             <td>{{ $show->title }}</td>
+                            <td><img src="{{ (!empty($show->banner))?$show->banner:asset('simg/avatarEmpty.png') }}" class="width-80" alt="Show banner"></td>
                             <td>{{ date('d F, Y', strtotime($show->date)) }}</td>
                             <td>{{ $show->start_time.' - '.$show->end_time }}</td>
                             <td>{{ date('d F, Y', strtotime($show->expiry_date)) }}</td>

@@ -22,7 +22,7 @@
                     <div class="card pl-0 pr-0 border">
                         <div class="">
                             <!-- Datatable Start-->
-                            <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatable1">
+                            <table class="table table-striped table-responsive table_mob my-4 w-100" id="datatableGroup">
                                 <thead>
                                     <tr>
                                         <th data-priority="1">{{__('Id')}}</th>
