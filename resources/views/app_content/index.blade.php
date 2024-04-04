@@ -34,33 +34,24 @@
                 <!-- Screen Text Tab Start-->
                 <div class="tab-pane active" id="cont_manag" role="tabpanel">
                     <div class="row p-4">
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-12 managerPermission p-0 p-md-3">
-                                    <div class="form-group">
-                                        <div class="dd" id="nestable2">
-                                            <ol class="dd-list">
-                                                @foreach($app_contents as $app_content)
-                                                <li class="dd-item dd3-item ">
-                                                    <div class="dd3-content">{{ __($app_content->name) }}
-                                                        <div class="form-group float-right m-0">
-                                                            <button class="btn btn-info p-0 btn_p editScreenText" data-id="{{ $app_content->id }}"><i class="fa fa-edit"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                @endforeach
-                                            </ol>
-                                        </div>
-                                    </div>
+                        <div class="col-sm-12 managerPermission p-0 p-md-3">
+                            <div class="form-group">
+                                <div class="dd" id="nestable2">
+                                    <ol class="dd-list">
+                                        @foreach($app_contents as $app_content)
+                                        <li class="dd-item dd3-item ">
+                                            <div class="dd3-content">{{ __($app_content->name) }}
+                                                <div class="form-group float-right m-0">
+                                                    <button class="btn btn-info p-0 btn_p editScreenText" data-id="{{ $app_content->id }}"><i class="fa fa-edit"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ol>
                                 </div>
                             </div>
                         </div>
-                        <!--- Edit  Row Start--->
-                        <div class="col-12 p-0" id="editScreenData">
-
-                        </div>
-                        <!--- Edit  Row End--->
                     </div>
                 </div>
                 <!-- Screen Text Tab End-->
