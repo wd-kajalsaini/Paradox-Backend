@@ -522,7 +522,7 @@
                             { extend: 'print', className: 'btn-info' }
                             ]
                     });
-                            $('#datatable3').DataTable({
+                    $('#datatable3').DataTable({
                             'paging': true, // Table pagination
                             'ordering': true, // Column ordering
                             'info': true, // Bottom left status text

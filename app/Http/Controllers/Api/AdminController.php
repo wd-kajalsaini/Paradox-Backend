@@ -30,7 +30,7 @@ class AdminController extends Controller {
         $error_message = "";
         if ($validator->fails()) {
             foreach ($fields as $field) {
-                if (isset($validator->errors()->getMessages()[$field][0]) && !empty($validator->errors()->getMessages()[$field][0]) && empty($error_message)) {
+                if (isset($validator->errors()->wgetMessages()[$field][0]) && !empty($validator->errors()->getMessages()[$field][0]) && empty($error_message)) {
                     $error_message = $validator->errors()->getMessages()[$field][0];
                     return response()->json(['status' => 0, 'message' => $error_message]);
                 }
