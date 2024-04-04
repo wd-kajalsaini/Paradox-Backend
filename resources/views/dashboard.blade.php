@@ -16,38 +16,38 @@
         @endif
         <div class="p-3">
             <div class="row">
-                <div class="col-md-6 col-xl-3 R">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-danger-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
-                            <div class="col-4 text-center"><em class="fa fa-users fa-2x"></em></div>
-                            <div class="col-8 py-4 bg-danger rounded-right">
+                            <div class="col-3 text-center"><em class="fa fa-users fa-2x"></em></div>
+                            <div class="col-9 py-4 bg-danger rounded-right">
                                 <div class="h1 m-0 text-bold">{{ $total_users }}</div>
-                                <div class="">Total users</div>
+                                <div class="sub_title_card">Total users</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3 ">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-warning-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
-                            <div class="col-4 text-center"><em class="fa fa-credit-card fa-2x"></em></div>
-                            <div class="col-8 py-4 bg-warning rounded-right">
+                            <div class="col-3 text-center"><em class="fa fa-credit-card fa-2x"></em></div>
+                            <div class="col-9 py-4 bg-warning rounded-right">
                                 <div class="h1 m-0 text-bold">{{ $total_payments_for_products }}</div>
-                                <div class="">Total payments for products</div>
+                                <div class="sub_title_card">Total payments for products</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3 ">
+                <div class="col-md-6 col-xl-3">
                     <!-- START card-->
                     <div class="card bg-green-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
-                            <div class="col-4 text-center"><em class="fa fa-envelope fa-2x"></em></div>
-                            <div class="col-8 py-4 bg-green rounded-right">
+                            <div class="col-3 text-center"><em class="fa fa-envelope fa-2x"></em></div>
+                            <div class="col-9 py-4 bg-green rounded-right">
                                 <div class="h1 m-0 text-bold">{{ $unread_messages }}</div>
-                                <div class="">No. of unread messages</div>
+                                <div class="sub_title_card">No. of unread messages</div>
                             </div>
                         </div>
                     </div>
@@ -56,10 +56,10 @@
                     <!-- START card-->
                     <div class="card bg-primary-dark border-0" style="padding:0px">
                         <div class="row align-items-center mx-0">
-                            <div class="col-4 text-center"><em class="fa fa-users fa-2x"></em></div>
-                            <div class="col-8 py-4 bg-primary rounded-right">
+                            <div class="col-3 text-center"><em class="fa fa-users fa-2x"></em></div>
+                            <div class="col-9 py-4 bg-primary rounded-right">
                                 <div class="h1 m-0 text-bold">{{ $online_users }}</div>
-                                <div class="">Total online/active users</div>
+                                <div class="sub_title_card">Total online/active users</div>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="card p-2 p-md-4">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">Unread contact us table</h4>
+                                <h4 class="mb-0">Unread Contact Us Table</h4>
                             </div>
                             <div class="col-4 text-right ">
                                 <a href="{{route('inboxListing')}}"><button class="btn btn-primary btn-sm theme-btn " type="button">View All</button></a>
