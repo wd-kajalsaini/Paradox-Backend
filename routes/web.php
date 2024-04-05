@@ -209,3 +209,4 @@ Route::patch('reset_password_submit', 'Admin\LoginController@reset_password_subm
 Route::get('invalid_link', 'Admin\LoginController@invalid_link')->name('invalid_link');
 Route::get('page_not_found', 'Admin\LoginController@page_not_found')->name('page_not_found');
 Route::get('password_success', 'Admin\LoginController@password_success')->name('password_success');
+Route::get('privacy_policy', 'PrivacyController@privacy_policy')->name('privacy_policy');
