@@ -2,6 +2,7 @@
 @extends('layouts.static_pages')
 @section('content')
 <section>
+    <div class="container">
     <div class="row align-items-center">
       <div class="col-12">
         <div class="text-center mb-5">
@@ -103,6 +104,7 @@
           </p>
         </div>
       </div>
+    </div>
     </div>
   </section>
   @endsection
