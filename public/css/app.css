@@ -2949,7 +2949,7 @@ background: #2ea8e5 !important; }
 .dd3-content {
 display: block;
 margin: 5px 0 10px;
-padding: 10px 10px 10px 50px;
+padding: 10px 10px 10px 0px;
 text-decoration: none;
 border: 1px solid #ebebeb;
 background: #fff;
@@ -6319,7 +6319,7 @@ background-color: #000 !important; }
 
 .width-1
 {
-width: 110px;
+width: 95px;
 }
 
 .width-80
@@ -6459,6 +6459,18 @@ font-size: 12px !important
             display: block !important;
         }
 }
+@media (max-width: 1400px) {
+    .sub_title_card {
+            font-size: 11px;
+        }
+}
+@media (max-width: 1200px) {
+    .sub_title_card {
+        font-size: 14px;
+    }
+}
+
+
 
 @media (max-width: 576px) {
 .content-wrapper {
@@ -6489,6 +6501,13 @@ table#datatable1 tr th,
 table#datatable1 tr td {
     padding-left: 6px;
     padding-right: 25px;
+}
+.managerPermission .dd3-content {
+    margin: 10px 20px;
+}
+.dd3-content {
+    padding: 10px 10px 10px 20px;
+
 }
 
 }
