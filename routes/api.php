@@ -3,21 +3,21 @@
 use Illuminate\Http\Request;
 
 /*
-  |--------------------------------------------------------------------------
-  | API Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register API routes for your application. These
-  | routes are loaded by the RouteServiceProvider within a group which
-  | is assigned the "api" middleware group. Enjoy building your API!
-  |
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
  */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth:api'], function() {
+Route::group(['middleware' => 'auth:api'], function () {
     Route::get("user/view", "Api\UserController@view");
     Route::get("user/token_status", "Api\UserController@token_status");
     Route::post("user/edit_profile", "Api\UserController@edit_profile");
@@ -50,7 +50,6 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post("section/section_shows", "Api\SectionController@section_shows");
     Route::post("subscription/mark_unmark", "Api\SubscriptionController@mark_unmark");
 
-
 });
 
 Route::get('overall_data', 'Api\HomeController@index');
@@ -62,6 +61,8 @@ Route::post('user/register', 'Api\UserController@register');
 Route::post('user/check_email_exist', 'Api\UserController@check_email_exist');
 Route::post('user/verify_email', 'Api\UserController@verify_email');
 Route::post('user/login', 'Api\UserController@login');
+Route::get('user/delete-account', 'Api\UserController@deleteAccount');
+
 Route::post('user/social_login', 'Api\UserController@social_login');
 Route::post('user/loginWithPhone', 'Api\UserController@loginWithPhone');
 Route::get('kvitelId/list_of_products', 'Api\KvitelIdController@list_of_products');
@@ -82,9 +83,9 @@ Route::post("admin/section_shows", "Api\AdminController@section_shows");
 Route::post("admin/show_detail", "Api\AdminController@show_detail");
 
 Route::get('login', array('as' => 'login', function () {
-        return response()->json(['status' => 0, 'message' => 'Unauthorized Token']);
-    }));
+    return response()->json(['status' => 0, 'message' => 'Unauthorized Token']);
+}));
 
-Route::any('{all}', function() {
+Route::any('{all}', function () {
     return response()->json(['status' => 0, 'message' => 'Page Not Found']);
 })->where('all', '.*');
