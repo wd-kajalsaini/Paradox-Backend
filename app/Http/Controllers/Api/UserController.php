@@ -2,42 +2,43 @@
 
 namespace App\Http\Controllers\api;
 
-use Illuminate\Http\Request;
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use DB;
-use Mail;
-use App\Mail\AwsEmail;
 use App\Mail\Forgot;
-use File;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Mail;
+use Validator;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
 
     }
 
     /* User registration via email */
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-                    'name' => 'required',
-                    'email' => ['required','email',
-                    Rule::unique('users')->where(function($query) {
-                        $query->where(['is_verified' => 1]);
-                    })
-                    ],
-                    'password' => 'required',
-                    'phone_number' => ['required',
-                    Rule::unique('users')->where(function($query) {
-                        $query->where(['is_verified' => 1]);
-                    })
-                    ],
-                    'gender' => 'required'
+            'name' => 'required',
+            'email' => ['required', 'email',
+                Rule::unique('users')->where(function ($query) {
+                    $query->where(['is_verified' => 1]);
+                }),
+            ],
+            'password' => 'required',
+            'phone_number' => ['required',
+                Rule::unique('users')->where(function ($query) {
+                    $query->where(['is_verified' => 1]);
+                }),
+            ],
+            'gender' => 'required',
         ]);
         $fields = array('name', 'email', 'password', 'phone_number', 'gender');
         $error_message = "";
@@ -55,7 +56,7 @@ class UserController extends Controller {
             return response()->json(['status' => 0, 'message' => "Email exists please change it"]);
         }
         try {
-            $fillableData = ['name' => $input['name'],'gender' => $input['gender'], 'email' => $input['email'], 'password' => Hash::make($input['password']), 'is_verified' => 0, 'install_date' => Date('Y-m-d'), 'phone_number' => $input['phone_number']];
+            $fillableData = ['name' => $input['name'], 'gender' => $input['gender'], 'email' => $input['email'], 'password' => Hash::make($input['password']), 'is_verified' => 0, 'install_date' => Date('Y-m-d'), 'phone_number' => $input['phone_number']];
             if (!empty($input['device_type'])) {
                 $fillableData['device_type'] = $input['device_type'];
             } else {
@@ -71,12 +72,12 @@ class UserController extends Controller {
             } else {
                 $fillableData['notification_token'] = "";
             }
-            if(!$userData){
+            if (!$userData) {
                 $userData = new User();
             }
             $userData->fill($fillableData);
             $userData->save();
-            $fourdigitrandom = rand(1000,9999);
+            $fourdigitrandom = rand(1000, 9999);
             $userData->fill(['email_verification_code' => $fourdigitrandom]);
             $userData->save();
             $mailResp = Mail::to([$input['email']])->send(new Forgot(['email_verification_code' => $fourdigitrandom, 'userName' => $input['name']], ['subject' => 'Email Verification Code', 'view' => 'email_template/email_verification']));
@@ -89,10 +90,11 @@ class UserController extends Controller {
 
     /* Verify email with the code send on email */
 
-    function verify_email(Request $request){
+    public function verify_email(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-                    'email' => 'required|email',
-                    'code' => 'required',
+            'email' => 'required|email',
+            'code' => 'required',
         ]);
         $fields = array('email', 'code');
         $error_message = "";
@@ -109,11 +111,11 @@ class UserController extends Controller {
         if (empty($userData)) {
             return response()->json(['status' => 0, 'message' => "Email doesn't exist in our system"]);
         }
-        if($userData->is_verified==1){
+        if ($userData->is_verified == 1) {
             return response()->json(['status' => 0, 'message' => "Email already verified"]);
         }
-        if($userData->email_verification_code == $input['code']){
-            $fillableData = ['is_verified' => 1,'email_verification_code' => ""];
+        if ($userData->email_verification_code == $input['code']) {
+            $fillableData = ['is_verified' => 1, 'email_verification_code' => ""];
             if (!empty($input['device_type'])) {
                 $fillableData['device_type'] = $input['device_type'];
             }
@@ -135,10 +137,11 @@ class UserController extends Controller {
 
     /* User login via email */
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-                    'email' => 'required|email',
-                    'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
         $fields = array('email', 'password');
         $error_message = "";
@@ -155,16 +158,16 @@ class UserController extends Controller {
         if (!$user) {
             return response()->json(['status' => 0, 'message' => 'Email address not found.']);
         }
-        if($user->status == 'Block'){
+        if ($user->status == 'Block') {
             return response()->json(['status' => 0, 'message' => 'Your account is blocked at this moment']);
         }
 
-        if($user->is_verified == 0){
-            $fourdigitrandom = rand(1000,9999);
+        if ($user->is_verified == 0) {
+            $fourdigitrandom = rand(1000, 9999);
             $user->fill(['email_verification_code' => $fourdigitrandom]);
             $user->save();
             $mailResp = Mail::to([$input['email']])->send(new Forgot(['email_verification_code' => $fourdigitrandom, 'userName' => $user->name], ['subject' => 'Email Verification Code', 'view' => 'email_template/email_verification']));
-            return response()->json(['status' => 1, 'data' => ['is_verified' => 0] ,'message' => 'Email address not verified yet.']);
+            return response()->json(['status' => 1, 'data' => ['is_verified' => 0], 'message' => 'Email address not verified yet.']);
         }
         if (!Hash::check($request->password, $user->password)) {
             return response()->json(['status' => 0, 'message' => 'Wrong password provided.']);
@@ -194,7 +197,8 @@ class UserController extends Controller {
 
     /* View Profile */
 
-    public function view() {
+    public function view()
+    {
         $user = Auth::user();
         if ($user) {
             return response()->json(['status' => 1, 'data' => $user]);
@@ -203,9 +207,10 @@ class UserController extends Controller {
         }
     }
 
-    public function social_login(Request $request){
+    public function social_login(Request $request)
+    {
         $input = $request->all();
-        if(empty($input['google_token']) && empty($input['facebook_token']) && empty($input['apple_token'])){
+        if (empty($input['google_token']) && empty($input['facebook_token']) && empty($input['apple_token'])) {
             return response()->json(['status' => 0, 'message' => "Must send social token"]);
         }
 
@@ -231,10 +236,10 @@ class UserController extends Controller {
                 $user_check = User::where(['apple_token' => $input['apple_token']])->first();
             }
         }
-        if(!empty($input['name'])){
+        if (!empty($input['name'])) {
             $data['name'] = $input['name'];
         }
-        if(!empty($input['image'])){
+        if (!empty($input['image'])) {
             $data['image'] = $input['image'];
         }
         if (!empty($input['notification_token'])) {
@@ -256,7 +261,7 @@ class UserController extends Controller {
         if (empty($user_check)) {
             $user_check = new User;
         } else {
-            if($user_check->status == 'Block'){
+            if ($user_check->status == 'Block') {
                 return response()->json(['status' => 0, 'message' => 'Your account is blocked at this moment']);
             }
         }
@@ -267,10 +272,11 @@ class UserController extends Controller {
         return response()->json(['status' => 1, 'message' => 'Login successfull', 'data' => $userdetail]);
     }
 
-    public function forgot_password(Request $request) {
+    public function forgot_password(Request $request)
+    {
         $data = $request->all();
         $validator = Validator::make($request->all(), [
-                    'email' => 'required|email',
+            'email' => 'required|email',
         ]);
         $fields = array('email');
         $error_message = "";
@@ -289,7 +295,7 @@ class UserController extends Controller {
         if (!empty($emailUser->getAttributes()['forgotpassword_token']) && ($emailUser->getAttributes()['forgotpassword_expiretime'] > strtotime('+0 hours'))) {
             $password_token = $emailUser->getAttributes()['forgotpassword_token'];
         } else {
-            $password_token = rand(1000,9999);
+            $password_token = rand(1000, 9999);
             User::whereId($emailUser->getAttributes()['id'])->update(['forgotpassword_token' => $password_token, 'forgotpassword_expiretime' => strtotime('+24 hours')]);
         }
         try {
@@ -302,14 +308,15 @@ class UserController extends Controller {
 
     /* Verify otp and reset password */
 
-    public function verify_otp_reset(Request $request){
+    public function verify_otp_reset(Request $request)
+    {
         $input = $request->all();
         $validator = Validator::make($request->all(), [
-                    'email' => 'required|email',
-                    'otp' => 'required',
-                    'password' => 'required'
+            'email' => 'required|email',
+            'otp' => 'required',
+            'password' => 'required',
         ]);
-        $fields = array('email','otp','password');
+        $fields = array('email', 'otp', 'password');
         $error_message = "";
         if ($validator->fails()) {
             foreach ($fields as $field) {
@@ -320,7 +327,7 @@ class UserController extends Controller {
             return response()->json(['status' => 0, 'message' => $error_message]);
         }
         $verify_otp = User::where(['email' => $input['email'], 'forgotpassword_token' => $input['otp']])->first();
-        if($verify_otp){
+        if ($verify_otp) {
             $verify_otp->fill(['forgotpassword_token' => "", 'password' => Hash::make($input['password'])]);
             $verify_otp->save();
             return response()->json(['status' => 1, 'message' => "Password updated successfully."]);
@@ -329,10 +336,11 @@ class UserController extends Controller {
         }
     }
 
-    public function update_notification_token(Request $request) {
+    public function update_notification_token(Request $request)
+    {
         $input = $request->all();
         $validator = Validator::make($request->all(), [
-                    'notification_token' => 'required',
+            'notification_token' => 'required',
         ]);
         $fields = array('notification_token');
         $error_message = "";
@@ -350,28 +358,29 @@ class UserController extends Controller {
         return response()->json(['status' => 1, 'data' => "Notification token updated now"]);
     }
 
-    public function edit_profile(Request $request){
+    public function edit_profile(Request $request)
+    {
         $user = Auth::user();
-        if(!empty($request->email)){
+        if (!empty($request->email)) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'email' => ['required','email',
-                Rule::unique('users')->where(function($query)use($user) {
-                    $query->where(['is_verified' => 1]);
-                    $query->where('id','!=',$user->id);
-                })
+                'email' => ['required', 'email',
+                    Rule::unique('users')->where(function ($query) use ($user) {
+                        $query->where(['is_verified' => 1]);
+                        $query->where('id', '!=', $user->id);
+                    }),
                 ],
                 'phone_number' => 'required',
-                'gender' => 'required'
+                'gender' => 'required',
             ]);
         } else {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'phone_number' => 'required',
-                'gender' => 'required'
+                'gender' => 'required',
             ]);
         }
-        if($request->email){
+        if ($request->email) {
 
         }
         $fields = array('name', 'email', 'phone_number', 'gender');
@@ -387,8 +396,8 @@ class UserController extends Controller {
         $input = $request->all();
 
         try {
-            $fillableData = ['name' => $input['name'], 'phone_number' => $input['phone_number'], 'gender' => $input['gender'], 'image' => (!empty($input['image']))?$input['image']:""];
-            if(!empty($request->email)){
+            $fillableData = ['name' => $input['name'], 'phone_number' => $input['phone_number'], 'gender' => $input['gender'], 'image' => (!empty($input['image'])) ? $input['image'] : ""];
+            if (!empty($request->email)) {
                 $fillableData['email'] = $input['email'];
             }
 
@@ -403,18 +412,19 @@ class UserController extends Controller {
 
     /* Check existance of email and phone */
 
-    public function check_email_exist(Request $request) {
+    public function check_email_exist(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-                    'email' => ['required','email',
-                    Rule::unique('users')->where(function($query) {
-                        $query->where(['is_verified' => 1]);
-                    })
-                    ],
-                    'phone_number' => ['required',
-                    Rule::unique('users')->where(function($query) {
-                        $query->where(['is_verified' => 1]);
-                    })
-                    ],
+            'email' => ['required', 'email',
+                Rule::unique('users')->where(function ($query) {
+                    $query->where(['is_verified' => 1]);
+                }),
+            ],
+            'phone_number' => ['required',
+                Rule::unique('users')->where(function ($query) {
+                    $query->where(['is_verified' => 1]);
+                }),
+            ],
         ]);
         $fields = array('email', 'phone_number');
         $error_message = "";
@@ -429,13 +439,29 @@ class UserController extends Controller {
         return response()->json(['status' => 1, 'message' => 'New registration.']);
     }
 
-    public function token_status(Request $request){
+    public function token_status(Request $request)
+    {
         $user = Auth::user();
         if ($user->status == 'Block') {
             return response()->json(['status' => 0, 'message' => "You are blocked by Admin"]);
-        } elseif($user->status == 'Active') {
+        } elseif ($user->status == 'Active') {
             return response()->json(['status' => 1, 'message' => "User Active"]);
         }
+    }
+    public function deleteAccount()
+    {
+        DB::beginTransaction();
+        try {
+            $user = Auth::user();
+            User::where('id', $user->id)->delete();
+            DB::commit();
+            return response()->json(['status' => 1, 'message' => 'User account has been deleted successfully']);
+
+        } catch (\Exception $e) {
+            DB::commit();
+            return response()->json(['status' => 1, 'message' => $e->getMessage()]);
+        }
+
     }
 
 }
