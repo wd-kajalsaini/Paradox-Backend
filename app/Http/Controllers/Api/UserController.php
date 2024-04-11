@@ -448,12 +448,12 @@ class UserController extends Controller
             return response()->json(['status' => 1, 'message' => "User Active"]);
         }
     }
-    public function deleteAccount()
+    public function deleteAccount(Request $request)
     {
         DB::beginTransaction();
         try {
-            $user = Auth::user();
-            User::where('id', $user->id)->delete();
+
+            User::where('id', $request->user_id)->delete();
             DB::commit();
             return response()->json(['status' => 1, 'message' => 'User account has been deleted successfully']);
 
